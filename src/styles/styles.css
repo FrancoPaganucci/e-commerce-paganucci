@@ -1,0 +1,67 @@
+.header {
+  padding: 15px 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background-color: #313131;
+}
+
+.header .header-left-side {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-column-gap: 15px;
+          column-gap: 15px;
+  color: #FFFFFF;
+}
+
+.header nav {
+  margin-right: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-column-gap: 50px;
+          column-gap: 50px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.header nav a {
+  text-decoration: none;
+  font-size: 20px;
+  color: #FFFFFF;
+}
+
+.header nav a:hover {
+  -webkit-text-decoration: underline 1px solid;
+          text-decoration: underline 1px solid;
+}
+
+.header nav #a-login {
+  margin-left: 80px;
+  padding: 10px 15px;
+  border-radius: 20px;
+  background-color: #FFFFFF;
+  color: #313131;
+}
+
+.header nav #a-login:hover {
+  background-color: #000;
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+* {
+  margin: 0;
+}
+/*# sourceMappingURL=styles.css.map */

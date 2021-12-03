@@ -1,20 +1,57 @@
-const NavBar = () => {
+import CartWidget from "./CartWidget";
+import styled from 'styled-components';
+import { theme_yellow } from "../styles/globalColors";
+
+const StyledHeader = styled.header`
+background-color: #14213d;
+padding: 15px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+.it-span {
+    color: ${theme_yellow};
+}
+.p-welcome {
+    margin-left: 30px;
+    margin-top: 9px;
+}
+.header-left-side {
+    display: flex;
+    align-items: center;
+    column-gap: 15px;
+    color: #FFFFFF;
+}
+nav {
+    margin-right: 30px;
+    display: flex;
+    column-gap: 50px;
+    align-items: center;
+    a {
+        text-decoration: none;
+        font-size: 20px;
+        color: #FFFFFF;
+        &:hover {
+            text-decoration: underline 1px solid;
+        }
+    }
+}   
+`
+
+const NavBar = ({links}) => {
     return (
-        <header id="main-header" className="header">
+        <StyledHeader id="main-header" className="header">
             <div className="header-left-side">
-                <h1>BuyIT</h1>
-                <span className="material-icons">
-                    shopping_cart
-                </span>
+                <h1>Buy <span className="it-span">IT</span></h1>
             </div>
-            
+
             <nav>
-                <a href="#">link 1</a>
-                <a href="#">link 2</a>
-                <a href="#">link 3</a>
-                <a href="#" id="a-login">Login</a>
+                {links.map((elemento,indice)=>{
+                    return <a key={elemento.name+indice} href={elemento.href}>{elemento.name}</a>
+                })}
             </nav>
-        </header>
+            
+            <CartWidget />
+        </StyledHeader>
     )
 };
 

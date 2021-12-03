@@ -5,10 +5,13 @@ import React, { StrictMode } from "react";
 import ReactDOM from "react-dom";
 // 3) Necesitamos una aplicación de React
 import App from "./App";
-import "./styles/styles.css";
+// fonts
+import FontStyles from "./styles/fontStyles";
+
 // 4) Necesitamos dibujar la aplicación en el DOM
 ReactDOM.render(
     <React.StrictMode>
+        <FontStyles />
         <App />
     </React.StrictMode>,
     document.getElementById("root")

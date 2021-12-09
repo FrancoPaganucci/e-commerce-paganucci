@@ -1,6 +1,7 @@
 import ItemListContainer from "./components/ItemListContainer";
 import NavBar from "./components/NavBar";
 import { createGlobalStyle } from 'styled-components';
+import { useState } from "react";
 
 const linksECommerce = [
     {href:"#", name:"Productos"},  
@@ -8,6 +9,8 @@ const linksECommerce = [
 ];
 const usuario = "Franco";
 const greeting = "Aprovechá las últimas ofertas en BuyIT!";
+
+
 // global styles
 const GlobalStyle = createGlobalStyle`
 *{
@@ -17,14 +20,14 @@ const GlobalStyle = createGlobalStyle`
 }
 `
 
-function App () {
+function App() {
     return (
-        <> 
+        <>
             <GlobalStyle />
             <NavBar nombre={usuario} edad={26} links={linksECommerce} />
             <ItemListContainer usuario={usuario} greeting={greeting} />
         </>
-    ) 
+    )
 };
 
 export default App;

@@ -1,6 +1,12 @@
 import styled from 'styled-components';
 import {theme_blue, theme_yellow } from '../styles/globalColors.js';
 
+
+// ejemplo de función como prop para event listener en button
+const foo = () => {
+    console.log("foo");
+}
+
 const CartDiv = styled.div`
     padding: 15px 20px;
     margin-right: 10px;
@@ -23,10 +29,11 @@ const CartDiv = styled.div`
     }
     `
 const CartWidget = () => {
+
     return (<>
         <CartDiv>
             <p>0</p>
-            <span className="material-icons">
+            <span onClick={foo} className="material-icons">
                 shopping_cart
             </span>
         </CartDiv>

@@ -1,8 +1,8 @@
 // shortcut: rafce (React Arrow Function Component Export)
 import styled from 'styled-components';
 import { theme_blue, theme_yellow, theme_grey } from '../styles/globalColors';
-import { useState } from 'react';
 import ItemCount from './ItemCount';
+import { toast } from 'react-hot-toast'
 
 const StyledListContainer = styled.div`
     display: flex;
@@ -20,8 +20,15 @@ const StyledListContainer = styled.div`
 
 const ItemListContainer = ({usuario, greeting}) => {
 
-    const onAdd = () => {
-        console.log("onAdd()")
+    const onAdd = (cantidad) => {
+        if (cantidad > 1) {
+            toast.success(`El usuario agregó ${cantidad} items al carrito`);
+        } else {
+            toast.success(`El usuario agregó ${cantidad} item al carrito`);
+        }
+        setTimeout(()=> {
+            window.location.reload();
+        },2000)
     }
 
     return (

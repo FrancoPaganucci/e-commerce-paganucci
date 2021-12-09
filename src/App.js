@@ -2,6 +2,7 @@ import ItemListContainer from "./components/ItemListContainer";
 import NavBar from "./components/NavBar";
 import { createGlobalStyle } from 'styled-components';
 import { useState } from "react";
+import { Toaster, toast} from 'react-hot-toast'
 
 const linksECommerce = [
     {href:"#", name:"Productos"},  
@@ -26,6 +27,7 @@ function App() {
             <GlobalStyle />
             <NavBar nombre={usuario} edad={26} links={linksECommerce} />
             <ItemListContainer usuario={usuario} greeting={greeting} />
+            <Toaster position="bottom-right"/>
         </>
     )
 };

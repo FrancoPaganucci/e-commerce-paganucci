@@ -3,7 +3,7 @@ import { theme_blue, theme_yellow, theme_grey } from '../styles/globalColors';
 import { useState } from 'react';
 
 const StyledItemCount = styled.div`
-resize: none;
+width: 300px;
 margin-top: 50px;
 padding: 20px 15px;
 color: #000;
@@ -66,7 +66,7 @@ const ItemCount = ({ stock, initial, onAdd}) => {
                 <p className="counter">{contador}</p>
                 <button onClick={sumarCounter} >+</button>
             </div>
-            <button className="agregar-al-carrito-btn" onClick={onAdd}>Agregar al carrito</button>
+            <button className="agregar-al-carrito-btn" onClick={() => {onAdd(contador)}}>Agregar al carrito</button>
         </StyledItemCount>
     )
 }

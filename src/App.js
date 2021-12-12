@@ -1,8 +1,7 @@
-import ItemListContainer from "./components/ItemListContainer";
+import ItemListContainer from "./components/Items/ItemListContainer";
 import NavBar from "./components/NavBar";
 import { createGlobalStyle } from 'styled-components';
-import { useState } from "react";
-import { Toaster, toast} from 'react-hot-toast'
+import { Toaster } from 'react-hot-toast';
 
 const linksECommerce = [
     {href:"#", name:"Productos"},  
@@ -10,7 +9,6 @@ const linksECommerce = [
 ];
 const usuario = "Franco";
 const greeting = "Aprovechá las últimas ofertas en BuyIT!";
-
 
 // global styles
 const GlobalStyle = createGlobalStyle`
@@ -22,12 +20,13 @@ const GlobalStyle = createGlobalStyle`
 `
 
 function App() {
+
     return (
         <>
             <GlobalStyle />
             <NavBar nombre={usuario} edad={26} links={linksECommerce} />
             <ItemListContainer usuario={usuario} greeting={greeting} />
-            <Toaster position="bottom-right"/>
+            <Toaster position="top-right" toastOptions={{duration: 3000}} />
         </>
     )
 };

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { theme_blue, theme_yellow, theme_grey } from '../styles/globalColors';
+import { theme_blue } from '../../styles/globalColors';
 import { useState } from 'react';
 
 const StyledItemCount = styled.div`
@@ -41,7 +41,6 @@ background-color: #E5E5E5;
     }
 }
 `
-
 const ItemCount = ({ stock, initial, onAdd}) => {
     let [contador, setContador] = useState(initial);
     function restarCounter() {
@@ -49,7 +48,6 @@ const ItemCount = ({ stock, initial, onAdd}) => {
         if (contador > 1) {
             setContador(contador - 1);
         }
-
     }
     function sumarCounter() {
         console.log("sumar")
@@ -57,7 +55,6 @@ const ItemCount = ({ stock, initial, onAdd}) => {
             setContador(contador + 1); 
         }
     }
-
     return (
         <StyledItemCount>
             <h2>Producto 1</h2>

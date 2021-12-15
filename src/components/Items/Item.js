@@ -8,13 +8,14 @@ display: flex;
 flex-direction: column;
 align-items: center;
 width: 300px;
-//height: 300px;
-//overflow: hidden;
+height: 300px;
+overflow: hidden;
 border: 1px solid ${theme_blue};
 padding: 20px;
 border-radius: 50px;
 .prod-img {
-    width: 100px;
+    width: 140px;
+    height: 140px;
 }
 .prod-title {
     margin-top: 10px;

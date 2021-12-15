@@ -1,9 +1,7 @@
 // shortcut: rafce (React Arrow Function Component Export)
 import styled from 'styled-components';
 import { theme_blue, theme_yellow, theme_grey } from '../../styles/globalColors';
-import ItemCount from '../Items/ItemCount';
 import ItemList from './ItemList';
-import { toast } from 'react-hot-toast';
 import { useState, useEffect } from 'react';
 
 
@@ -21,37 +19,23 @@ const StyledListContainer = styled.div`
     text-align: center;
 `
 const ItemListContainer = ({ usuario, greeting }) => {
-    const onAdd = (cantidad) => {
-        if (cantidad > 1) {
-            toast.success(`El usuario agregó ${cantidad} items al carrito`);
-        } else {
-            toast.success(`El usuario agregó ${cantidad} item al carrito`);
-        }
-        setTimeout(() => {
-            window.location.reload();
-        }, 3200)
-    }
+    // Llamado a la API con fetch para trae productos en una lista...
     const [lista, setLista] = useState([]);
     useEffect(() => {
-        setTimeout(() => {
-            const traerProductos = async () => {
-                try {
-                    const resp = await fetch('https://fakestoreapi.com/products?limit=5');
-
-                    const info = await resp.json();
-                    return info;
-                } catch (error) {
-                    console.log(error);
-                }
+        const traerProductos = async () => {
+            try {
+                const resp = await fetch('https://fakestoreapi.com/products?limit=5');
+                const info = await resp.json();
+                return info;
+            } catch (error) {
+                console.log(error);
             }
-            const productos = traerProductos();
-            productos.then(response => {
-                console.log(response);
-                // acá había probado antes de reasignarle el valor con el spread operator, pero me daba error. En estos casos entonces no hace falta usarlo? supongo que no porque no es que estoy copiando un array, pero sí estoy modificando ese array vacío.
-                setLista(response);
-                console.log(lista);
-            })
-        }, 2000)
+        }
+        const productos = traerProductos();
+        productos.then(response => {
+            console.log(response);
+            setLista(response);
+        })
     }, [])
 
     if (lista.length < 1) {
@@ -68,7 +52,6 @@ const ItemListContainer = ({ usuario, greeting }) => {
                 <h1>Bienvenido, {usuario}!</h1>
                 <h1>{greeting}</h1>
                 <ItemList items={lista} />
-                <ItemCount stock={5} initial={1} onAdd={onAdd} />
             </StyledListContainer>
         )
     }

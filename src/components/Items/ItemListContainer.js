@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { theme_blue, theme_yellow, theme_grey } from '../../styles/globalColors';
 import ItemList from './ItemList';
 import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
 
 const StyledListContainer = styled.div`
@@ -21,6 +22,9 @@ const StyledListContainer = styled.div`
 const ItemListContainer = ({ usuario, greeting }) => {
     // Llamado a la API con fetch para trae productos en una lista...
     const [lista, setLista] = useState([]);
+    const { categoriaId } = useParams();
+    console.log(categoriaId)
+    // acá tendría que hacer un if que haga el fetch son el parámetro si lo trae y si no trae nada, que me traiga todos los productos... pero se repite mucho código, habría que encontrar la manera
     useEffect(() => {
         const traerProductos = async () => {
             try {
@@ -36,7 +40,7 @@ const ItemListContainer = ({ usuario, greeting }) => {
             console.log(response);
             setLista(response);
         })
-    }, [])
+    }, []) // en los detalles de producto, en el array de dependencias tengo que meter el id, el parámetro. como este no cambia, evita que re-renderice cada vez que el usuario vuelve a clickear en la categoría...
 
     if (lista.length < 1) {
         return (

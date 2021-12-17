@@ -57,7 +57,6 @@ const ItemCount = ({ stock, initial, onAdd}) => {
     }
     return (
         <StyledItemCount>
-            <h2>Producto 1</h2>
             <div className="stock-setter-cnt">
                 <button onClick={restarCounter}>-</button>
                 <p className="counter">{contador}</p>

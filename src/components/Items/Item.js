@@ -36,7 +36,7 @@ const Item = ({image, name, price, description}) => {
             <img className='prod-img' src={`${image}`} alt="product" />
             <p className='prod-title'>Title: {name}</p>
             <p className='prod-price'>Price: $ {price}</p>
-            <p className='prod-descr'>Description: {description}</p>
+            <button>VER MÁS</button>
         </StyledItem>
     )
 }

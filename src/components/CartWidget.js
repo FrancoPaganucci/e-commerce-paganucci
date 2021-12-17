@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import {theme_blue, theme_yellow } from '../styles/globalColors.js';
-
+import { Link, NavLink } from 'react-router-dom'; // usar en elcarrito
 
 // ejemplo de función como prop para event listener en button
 const foo = () => {
@@ -8,9 +8,11 @@ const foo = () => {
 }
 
 const CartDiv = styled.div`
+#cart-navlink {
     padding: 15px 20px;
     margin-right: 10px;
     text-align: center;
+    text-decoration: none;
     color: #FFF;
     display: flex;
     column-gap: 20px;
@@ -27,15 +29,16 @@ const CartDiv = styled.div`
     p {
         font-size: 20px;
     }
+}
     `
 const CartWidget = () => {
 
     return (<>
         <CartDiv>
-            <p>0</p>
-            <span onClick={foo} className="material-icons">
+            <NavLink onClick={foo} to="/cart" className="material-icons" id="cart-navlink">
+                <p>0</p>
                 shopping_cart
-            </span>
+            </NavLink>
         </CartDiv>
     </>
     )

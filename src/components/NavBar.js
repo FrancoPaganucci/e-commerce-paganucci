@@ -1,6 +1,7 @@
 import CartWidget from "./CartWidget";
 import styled from 'styled-components';
 import { theme_yellow } from "../styles/globalColors";
+import { Link, NavLink } from 'react-router-dom';
 
 const StyledHeader = styled.header`
 background-color: #14213d;
@@ -40,13 +41,13 @@ nav {
 const NavBar = ({links}) => {
     return (
         <StyledHeader id="main-header" className="header">
-            <div className="header-left-side">
+            <NavLink to="/" className="header-left-side">
                 <h1>Buy <span className="it-span">IT</span></h1>
-            </div>
+            </NavLink>
 
             <nav>
                 {links.map((elemento,indice)=>{
-                    return <a key={elemento.name+indice} href={elemento.href}>{elemento.name}</a>
+                    return <Link key={elemento.name+indice} to={elemento.href}>{elemento.name}</Link>
                 })}
             </nav>
             

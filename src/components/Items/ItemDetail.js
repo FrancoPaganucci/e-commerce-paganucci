@@ -47,22 +47,22 @@ const ItemDetail = ({ desc, title, price, image }) => {
             setContador(0)
         }, 3200)
     }
-    
+
     if (image) {
         return (
             <StyledItemDetail>
-            <h1>{title}</h1>
-            <div id="info">
-                <div id="left-side">
-                    <img src={`${image}`} alt={`${title}`} />
+                <h1>{title}</h1>
+                <div id="info">
+                    <div id="left-side">
+                        <img src={`${image}`} alt={`${title}`} />
+                    </div>
+                    <div id="right-side">
+                        <h2>Price: ${`${price}`}</h2>
+                        <h3>{desc}</h3>
+                        <ItemCount stock={5} initial={1} onAdd={onAdd} />
+                    </div>
                 </div>
-                <div id="right-side">
-                    <h2>Price: ${`${price}`}</h2>
-                    <h3>{desc}</h3>
-                    <ItemCount stock={5} initial={1} onAdd={onAdd} />
-                </div>
-            </div>
-        </StyledItemDetail>
+            </StyledItemDetail>
         )
     } else {
         return (

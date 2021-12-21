@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import {theme_blue, theme_yellow } from '../styles/globalColors.js';
-import { Link, NavLink } from 'react-router-dom'; // usar en elcarrito
+import { NavLink } from 'react-router-dom'; // usar en elcarrito
 
 // ejemplo de función como prop para event listener en button
 const foo = () => {

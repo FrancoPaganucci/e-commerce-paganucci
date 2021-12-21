@@ -1,3 +1,10 @@
+# Notas sobre el proyecto
+
+Esta aplicación consiste en una plataforma de e-commerce que, utilizando llamadas a una API, trae productos con información y los presenta para que el usuario pueda "comprarlos", navegando por categorías y visualizando el detalle de cada uno de los productos. 
+Las categorías en esta primera entrega intermedia sigue la estructura de la API de Fakestore ("Electronics", "Jewelery").
+
+Se incluyeron las dependencias "styled-components" para darle estilos con css a los componentes de una manera en que se puedan visualizar en su totalidad, es decir, dentro de cada Componente.js uno puede observar la estructura, la lógica, y los estilos del mismo, lo que hace más fácil su lectura y entendimiento. Además, se incluyó "react-hot-toast" para mostrar notificaciones en operaciones específicas, como por ejemplo un mensaje de éxito al agregar x cantidad de productos al carrito de compras. La razón de esta decisión radica en aprovechar estas notificaciones para mejorar la experiencia de usuario.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

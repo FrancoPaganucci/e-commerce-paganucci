@@ -1,6 +1,6 @@
 // index.js se encarga de agarrar toda la app de React y llevarla al DOM. (pasa solo acá. Levanta la app en el navegador)
 // 1) Necesitamos la variable React en scope
-import React, { StrictMode } from "react";
+import React from "react";
 // 2) Necesitamos la variable ReactDOM en scope
 import ReactDOM from "react-dom";
 // 3) Necesitamos una aplicación de React

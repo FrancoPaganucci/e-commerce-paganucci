@@ -26,7 +26,7 @@ const ItemListContainer = ({ usuario, greeting }) => {
     console.log(id)
     // acá tendría que hacer un if que haga el fetch son el parámetro si lo trae y si no trae nada, que me traiga todos los productos... pero se repite mucho código, habría que encontrar la manera
     useEffect(() => {
-        if (id != undefined) {
+        if (id !== undefined) {
             const traerProductos = async () => {
                 console.log("acá hace el fetch por id")
                 try {

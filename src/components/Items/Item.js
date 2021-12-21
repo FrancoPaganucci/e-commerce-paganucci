@@ -21,14 +21,26 @@ border-radius: 50px;
 .prod-title {
     margin-top: 10px;
     font-weight: 900;
-    color: ${theme_blue}
+    color: ${theme_blue};
 }
 .prod-price {
     margin-top: 10px;
     font-weight: 900;
 }
-.prod-descr {
-    margin-top: 10px;
+.link-cnt {
+    display: flex;
+    height: 100%;
+    align-items: end;
+    .vermas-btn {
+        text-decoration: none;
+        color: ${theme_blue};
+        font-weight: 900;
+        font-size: 20px;
+        margin-bottom: 20px;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
 }
 `
 const Item = ({image, name, price, id}) => {
@@ -38,7 +50,9 @@ const Item = ({image, name, price, id}) => {
             <img className='prod-img' src={`${image}`} alt="product" />
             <p className='prod-title'>Title: {name}</p>
             <p className='prod-price'>Price: $ {price}</p>
-            <Link key={id} to={`/producto/${id}`} >VER MÁS</Link>
+            <div className="link-cnt">
+                <Link className='vermas-btn' key={id} to={`/item/${id}`} >VER MÁS</Link>
+            </div>
         </StyledItem>
     )
 }

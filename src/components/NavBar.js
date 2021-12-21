@@ -18,6 +18,7 @@ justify-content: space-between;
 }
 .header-left-side {
     display: flex;
+    text-decoration: none;
     align-items: center;
     column-gap: 15px;
     color: #FFFFFF;

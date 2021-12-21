@@ -22,15 +22,15 @@ const StyledListContainer = styled.div`
 const ItemListContainer = ({ usuario, greeting }) => {
     // Llamado a la API con fetch para trae productos en una lista...
     const [lista, setLista] = useState([]);
-    const { categoriaId } = useParams();
-    console.log(categoriaId)
+    const { id } = useParams();
+    console.log(id)
     // acá tendría que hacer un if que haga el fetch son el parámetro si lo trae y si no trae nada, que me traiga todos los productos... pero se repite mucho código, habría que encontrar la manera
     useEffect(() => {
-        if (categoriaId != undefined) {
+        if (id != undefined) {
             const traerProductos = async () => {
-                console.log("acá hace el fetch por category")
+                console.log("acá hace el fetch por id")
                 try {
-                    const resp = await fetch(`https://fakestoreapi.com/products/category/${categoriaId}?limit=5`);
+                    const resp = await fetch(`https://fakestoreapi.com/products/category/${id}?limit=5`);
                     const info = await resp.json();
                     return info;
                 } catch (error) {
@@ -46,7 +46,7 @@ const ItemListContainer = ({ usuario, greeting }) => {
         } else {
             const traerProductos = async () => {
                 try {
-                    const resp = await fetch('https://fakestoreapi.com/products?limit=5');
+                    const resp = await fetch('https://fakestoreapi.com/products?limit=9');
                     const info = await resp.json();
                     return info;
                 } catch (error) {
@@ -59,7 +59,7 @@ const ItemListContainer = ({ usuario, greeting }) => {
                 setLista(response);
             })
         }
-    }, [categoriaId]) // en los detalles de producto, en el array de dependencias tengo que meter el id, el parámetro. como este no cambia, evita que re-renderice cada vez que el usuario vuelve a clickear en la categoría...
+    }, [id]) // en los detalles de producto, en el array de dependencias tengo que meter el id, el parámetro. como este no cambia, evita que re-renderice cada vez que el usuario vuelve a clickear en la categoría...
 
     if (lista.length < 1) {
         return (

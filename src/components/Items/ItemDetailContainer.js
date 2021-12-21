@@ -2,13 +2,14 @@ import React from 'react'
 import ItemDetail from './ItemDetail';
 import { useState, useEffect } from 'react';
 
-const ItemDetailContainer = () => {
-
+const ItemDetailContainer = ({productid}) => {
+    // ¿Por qué me entra acá como undefined, si en la url imprime bien el id del producto que se clickea?
+    console.log(`Acá ESTA EL ID EN ITEMDETAILCONTAINER: ${productid}`)
     const [product, setProduct] = useState({}); 
     useEffect(() => {
         const traerProducto = async () => {
             try {
-                 const resp = await fetch('https://fakestoreapi.com/products/1'); 
+                 const resp = await fetch(`https://fakestoreapi.com/products/${productid}`); 
                  const info = await resp.json();
                  return info;
             } catch (error) {

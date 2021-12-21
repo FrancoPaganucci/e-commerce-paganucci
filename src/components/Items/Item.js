@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components';
 import { theme_blue } from '../../styles/globalColors';
+import { Link } from 'react-router-dom';
+import ItemDetailContainer from './ItemDetailContainer';
 
 const StyledItem = styled.div`
 margin: 30px;
@@ -30,13 +32,13 @@ border-radius: 50px;
     margin-top: 10px;
 }
 `
-const Item = ({image, name, price, description}) => {
+const Item = ({image, name, price, productid}) => {
     return (
         <StyledItem>
             <img className='prod-img' src={`${image}`} alt="product" />
             <p className='prod-title'>Title: {name}</p>
             <p className='prod-price'>Price: $ {price}</p>
-            <button>VER MÁS</button>
+            <Link to={`/producto/${productid}`} productid={productid} element={<ItemDetailContainer />} >VER MÁS</Link>
         </StyledItem>
     )
 }

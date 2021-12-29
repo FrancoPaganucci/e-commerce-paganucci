@@ -4,7 +4,7 @@ import { toast } from 'react-hot-toast';
 import  styled  from 'styled-components';
 import { useState, useEffect, cleanup } from 'react';
 import { Link } from 'react-router-dom';
-import { theme_blue, theme_yellow } from '../../styles/globalColors';
+import { theme_secondary, theme_primary } from '../../styles/globalColors';
 
 const StyledItemDetail = styled.div`
 display: flex;
@@ -23,32 +23,41 @@ align-items: center;
     flex-direction: column;
     img {
         width: 350px;
-        padding-bottom: 60px;
     }
 }
 #right-side {
     display: flex;
     flex-direction: column;
+    h1 {
+        margin-bottom: 15px;
+        font-weight: 600;
+        letter-spacing: -0.4px;
+    }
     h2 {
         padding-bottom: 30px;
     }
     h3 {
         width: 80%;
         text-align: justify;
+        letter-spacing: 0.2px;
+        line-height: 29px;
     }
     .finalizar-compra-btn {
-        margin: 70px;
-        background-color: ${theme_blue};
+        margin: 70px 0;
+        background-color: ${theme_primary};
         color: white;
         text-decoration: none;
         width: 250px;
         text-align: center;
-        padding: 20px;
+        font-size: 20px;
+        padding: 13px 0px;
         border-radius: 10px;
+        transition: all .3s ease-in-out;
         &:hover {
-            background-color: ${theme_yellow};
-            color: ${theme_blue};
+            background-color: ${theme_secondary};
+            color: ${theme_primary};
             cursor: pointer;
+            transition: all .3s ease-in-out;
         }
     }
 }
@@ -78,12 +87,12 @@ const ItemDetail = ({ desc, title, price, image }) => {
     if (itemsEstadoInterno !== 0) {
         return (
             <StyledItemDetail>
-                <h1>{title}</h1>
                 <div id="info">
                     <div id="left-side">
                         <img src={`${image}`} alt={`${title}`} />
                     </div>
                     <div id="right-side">
+                    <h1>{title}</h1>
                         <h2>Price: ${`${price}`}</h2>
                         <h3>{desc}</h3>
                         <Link className='finalizar-compra-btn' to='/cart' >Finalizar compra</Link>
@@ -97,12 +106,12 @@ const ItemDetail = ({ desc, title, price, image }) => {
     if (image) {
         return (
             <StyledItemDetail>
-                <h1>{title}</h1>
                 <div id="info">
                     <div id="left-side">
                         <img src={`${image}`} alt={`${title}`} />
                     </div>
                     <div id="right-side">
+                        <h1>{title}</h1>
                         <h2>Price: ${`${price}`}</h2>
                         <h3>{desc}</h3>
                         <ItemCount stock={5} initial={1} onAdd={onAdd} />

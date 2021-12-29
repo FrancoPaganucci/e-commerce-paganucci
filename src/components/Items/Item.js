@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components';
-import { theme_blue } from '../../styles/globalColors';
+import { theme_secondary, theme_primary } from '../../styles/globalColors';
 import { Link } from 'react-router-dom';
 
 const StyledItem = styled.div`
@@ -11,49 +11,55 @@ align-items: center;
 width: 300px;
 height: 300px;
 overflow: hidden;
-border: 1px solid ${theme_blue};
-padding: 20px;
+border: 0px solid ${theme_primary};
+background-color: #e5e5e5;
 border-radius: 50px;
-.prod-img {
-    width: 140px;
-    height: 140px;
-}
-.prod-title {
-    margin-top: 10px;
-    font-weight: 900;
-    color: ${theme_blue};
-}
-.prod-price {
-    margin-top: 10px;
-    font-weight: 900;
-}
-.link-cnt {
+cursor: pointer;
+.vermas-btn {
     display: flex;
-    height: 100%;
-    align-items: end;
-    .vermas-btn {
-        text-decoration: none;
-        color: ${theme_blue};
-        font-weight: 900;
-        font-size: 20px;
-        margin-bottom: 20px;
+    .prod-img {
+        width: 300px;
+        height: 300px;
+    }
+    .hover-card {
+        position: absolute;
+        width: 300px;
+        height: 300px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
+        background: linear-gradient(180deg, rgba(8, 11, 20, 0), rgba(8, 11, 20, 1));
+        color: #FFF;
+        opacity: 0;
         &:hover {
-            text-decoration: underline;
+            opacity: 1;
+            transition: all .3s ease-in-out;
+        }
+        .prod-title {
+            margin-top: 10px;
+            font-weight: 100;
+        }
+        .prod-price {
+            font-weight: 900;
+            margin-top: 10px;
+            margin-bottom: 10px;
         }
     }
 }
 `
-const Item = ({image, name, price, id}) => {
+const Item = ({ image, name, price, id }) => {
     console.log(`id en Item: ${id}`)
     return (
-        <StyledItem>
-            <img className='prod-img' src={`${image}`} alt="product" />
-            <p className='prod-title'>Title: {name}</p>
-            <p className='prod-price'>Price: $ {price}</p>
-            <div className="link-cnt">
-                <Link className='vermas-btn' key={id} to={`/item/${id}`} >VER MÁS</Link>
-            </div>
-        </StyledItem>
+            <StyledItem>
+                <Link className='vermas-btn' key={id} to={`/item/${id}`} >
+                    <img className='prod-img' src={`${image}`} alt="product" />
+                    <div className="hover-card">
+                        <p className='prod-title'>{name}</p>
+                        <p className='prod-price'>Price: $ {price}</p>
+                    </div>
+                </Link>
+            </StyledItem>
     )
 }
 

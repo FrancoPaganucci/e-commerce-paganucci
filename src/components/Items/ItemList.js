@@ -5,6 +5,7 @@ import Item from './Item';
 const StyledItemList = styled.div`
 display: flex;
 flex-wrap: wrap;
+justify-content: space-around;
 `
 const ItemList = ({items}) => {
     console.log(items);

@@ -1,9 +1,8 @@
 // THEME COLORS
-const theme_black = "000";
-const theme_blue = "#14213d";
-const theme_yellow = "#fca311";
-const theme_grey = "#e5e5e5";
-const theme_white = "#FFF";
+const theme_primary = "#080b14";
+// rgba: rgba(8, 11, 20, 1)
+const theme_secondary = "#e9150a";
+// rgba: rgba(233, 21, 10, 1)
 module.exports = {
-    theme_black, theme_blue, theme_yellow, theme_grey, theme_white
+    theme_primary, theme_secondary
 }

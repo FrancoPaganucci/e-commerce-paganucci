@@ -1,16 +1,16 @@
 import CartWidget from "./CartWidget";
 import styled from 'styled-components';
-import { theme_yellow } from "../styles/globalColors";
+import { theme_primary, theme_secondary } from "../styles/globalColors";
 import { Link, NavLink } from 'react-router-dom';
 
 const StyledHeader = styled.header`
-background-color: #14213d;
+background-color: ${theme_primary};
 padding: 15px;
 display: flex;
 align-items: center;
 justify-content: space-between;
 .it-span {
-    color: ${theme_yellow};
+    color: ${theme_secondary};
 }
 .p-welcome {
     margin-left: 30px;

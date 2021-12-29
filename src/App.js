@@ -13,7 +13,7 @@ const linksECommerce = [
     {href: "/category/jewelery", name: "Jewelery", id: 3}
 ];
 const usuario = "Franco";
-const greeting = "Aprovechá las últimas ofertas en BuyIT!";
+const greeting = "Aprovechá las últimas ofertas!";
 
 // global styles
 const GlobalStyle = createGlobalStyle`

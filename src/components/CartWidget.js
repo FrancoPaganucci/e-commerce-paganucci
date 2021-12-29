@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {theme_blue, theme_yellow } from '../styles/globalColors.js';
+import { theme_secondary, theme_primary } from '../styles/globalColors';
 import { NavLink } from 'react-router-dom'; // usar en elcarrito
 
 // ejemplo de función como prop para event listener en button
@@ -22,8 +22,8 @@ const CartDiv = styled.div`
     cursor: pointer;
     transition: all .3s ease-in-out;
     &:hover {
-        background-color: ${theme_yellow};
-        color: ${theme_blue};
+        background-color: ${theme_secondary};
+        color: ${theme_primary};
         transition: all .3s ease-in-out;
     }
     p {

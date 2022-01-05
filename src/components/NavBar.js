@@ -40,6 +40,7 @@ nav {
 `
 
 const NavBar = ({links}) => {
+
     return (
         <StyledHeader id="main-header" className="header">
             <NavLink to="/" className="header-left-side">

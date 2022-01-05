@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components';
-import { theme_secondary, theme_primary } from '../../styles/globalColors';
+import { theme_primary } from '../../styles/globalColors';
 import { Link } from 'react-router-dom';
 
 const StyledItem = styled.div`
@@ -29,9 +29,10 @@ cursor: pointer;
         flex-direction: column;
         align-items: center;
         justify-content: flex-end;
-        background: linear-gradient(180deg, rgba(8, 11, 20, 0), rgba(8, 11, 20, 1));
+        background: linear-gradient(180deg, rgba(8, 11, 20, 0), rgba(8, 11, 20, 0.8));
         color: #FFF;
         opacity: 0;
+        border-radius: 50px;
         &:hover {
             opacity: 1;
             transition: all .3s ease-in-out;

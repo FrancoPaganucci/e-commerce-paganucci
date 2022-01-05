@@ -5,6 +5,7 @@ import { createGlobalStyle } from 'styled-components';
 import { Toaster } from 'react-hot-toast';
 import ItemDetailContainer from "./components/Items/ItemDetailContainer";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { CustomProvider } from "./context/cartContext";
 
 const linksECommerce = [
     // no me queda claro cómo se le pasa dinámicamente valores a estos paths, con :id, por ejemplo?
@@ -23,24 +24,25 @@ const GlobalStyle = createGlobalStyle`
     font-weight: 100;
 }
 `
-
 function App() {
 
     return (
-        <BrowserRouter>
-            <GlobalStyle />
-            <main>
-            <NavBar nombre={usuario} edad={26} links={linksECommerce} />
-                <Routes>
-                    <Route path="/" element={<ItemListContainer usuario={usuario} greeting={greeting}/>} />
-                    <Route path="/products" element={<ItemListContainer usuario={usuario} greeting={greeting} />} />
-                    <Route path="/cart" element={<Cart />} />
-                    <Route path="/category/:id" element={<ItemListContainer usuario={usuario} greeting={greeting} />} />
-                    <Route path="/item/:id" element={<ItemDetailContainer />} />
-                </Routes>
-            </main>
-            <Toaster position="top-right" toastOptions={{duration: 3000}} />
-        </BrowserRouter>
+        <CustomProvider>
+            <BrowserRouter>
+                <GlobalStyle />
+                <main>
+                    <NavBar nombre={usuario} edad={26} links={linksECommerce} />
+                    <Routes>
+                        <Route path="/" element={<ItemListContainer usuario={usuario} greeting={greeting} />} />
+                        <Route path="/products" element={<ItemListContainer usuario={usuario} greeting={greeting} />} />
+                        <Route path="/cart" element={<Cart />} />
+                        <Route path="/category/:id" element={<ItemListContainer usuario={usuario} greeting={greeting} />} />
+                        <Route path="/item/:id" element={<ItemDetailContainer />} />
+                    </Routes>
+                </main>
+                <Toaster position="top-right" toastOptions={{ duration: 3000 }} />
+            </BrowserRouter>
+        </CustomProvider>
     )
 };
 

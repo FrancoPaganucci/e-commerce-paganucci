@@ -10,6 +10,7 @@ color: #000;
 display: flex;
 flex-direction: column;
 background-color: #E5E5E5;
+border-radius: 15px;
 .stock-setter-cnt {
     display: flex;
     justify-content: space-between;

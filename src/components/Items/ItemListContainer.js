@@ -21,7 +21,6 @@ const ItemListContainer = ({ usuario, greeting }) => {
     useEffect(() => {
         if (id !== undefined) {
             const traerProductos = async () => {
-                console.log("acá hace el fetch por id")
                 try {
                     const resp = await fetch(`https://fakestoreapi.com/products/category/${id}?limit=5`);
                     const info = await resp.json();

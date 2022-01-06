@@ -4,10 +4,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 const ItemDetailContainer = () => {
-    // ¿Por qué me entra acá como undefined, si en la url imprime bien el productId del producto que se clickea?
     const { id } = useParams();
-    console.log(`Acá ESTA EL productId EN ITEMDETAILCONTAINER: ${id}`)
-
     const [product, setProduct] = useState({}); 
     
     useEffect(() => {

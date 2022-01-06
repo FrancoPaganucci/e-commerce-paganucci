@@ -5,6 +5,7 @@ import  styled  from 'styled-components';
 import { useState, useEffect, cleanup } from 'react';
 import { Link } from 'react-router-dom';
 import { theme_secondary, theme_primary } from '../../styles/globalColors';
+import { useContexto } from '../../context/cartContext';
 
 const StyledItemDetail = styled.div`
 display: flex;
@@ -63,8 +64,18 @@ align-items: center;
 }
 
 `
-const ItemDetail = ({ desc, title, price, image }) => {
+const ItemDetail = ({ desc, title, price, image, id }) => {
     const [itemsEstadoInterno, setItemsEstadoInterno] = useState(0);
+    const { addItem } = useContexto();
+    const this_product = {
+        id,
+        title,
+        image,
+        price,
+        desc,
+        quantity: 0
+    }
+
     const onAdd = (contador, setContador) => {
         if (contador > 1) {
             toast.success(`El usuario agregó ${contador} items al carrito`);
@@ -85,6 +96,7 @@ const ItemDetail = ({ desc, title, price, image }) => {
         }
     }, [itemsEstadoInterno])
     if (itemsEstadoInterno !== 0) {
+        this_product.quantity = itemsEstadoInterno;
         return (
             <StyledItemDetail>
                 <div id="info">
@@ -95,7 +107,7 @@ const ItemDetail = ({ desc, title, price, image }) => {
                     <h1>{title}</h1>
                         <h2>Price: ${`${price}`}</h2>
                         <h3>{desc}</h3>
-                        <Link className='finalizar-compra-btn' to='/cart' >Finalizar compra</Link>
+                        <Link className='finalizar-compra-btn' to='/cart' onClick={()=>{addItem(this_product, itemsEstadoInterno)}} >Finalizar compra</Link>
                     </div>
                 </div>
             </StyledItemDetail>

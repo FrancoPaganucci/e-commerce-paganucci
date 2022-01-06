@@ -1,17 +1,17 @@
 import React from 'react'
 import { useContexto } from './context/cartContext';
+import CartItems from './components/Items/CartItems';
 
-const Cart = () => {
-
-    const {carrito, borrarDelCarrito} = useContexto();
-
+const CartItemContainer = () => {
+    const { cart } = useContexto();
+    console.log(cart)
     return (
         <div>
-            Soy carrito
-            <br />
-            {console.log(`carrito traido desde el context!: ${carrito}`)}
+            {cart.map(item => (
+                <CartItems key={item.id} name={item.title} price={item.price} image={item.image} id={item.id} />
+            ))}
         </div>
     )
 }
 
-export default Cart
+export default CartItemContainer

@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { theme_secondary, theme_primary } from '../styles/globalColors';
 import { NavLink } from 'react-router-dom'; // usar en elcarrito
-import { contexto } from '../context/cartContext'
 import { useContexto } from "../context/cartContext";
 
 // ejemplo de función como prop para event listener en button
@@ -35,12 +34,12 @@ const CartDiv = styled.div`
     `
 const CartWidget = () => {
 
-    const { cantidad_total } = useContexto;
+    const { total } = useContexto;
 
     return (<>
         <CartDiv>
             <NavLink onClick={foo} to="/cart" className="material-icons" id="cart-navlink">
-                <p>{cantidad_total ? cantidad_total : 0 }</p>
+                <p>{total ? total : 0 }</p>
                 shopping_cart
             </NavLink>
         </CartDiv>

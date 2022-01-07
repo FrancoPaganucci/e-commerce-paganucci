@@ -1,6 +1,6 @@
 import ItemListContainer from "./components/Items/ItemListContainer";
 import NavBar from "./components/NavBar";
-import Cart from "./Cart"
+import Cart from "./components/Cart/Cart"
 import { createGlobalStyle } from 'styled-components';
 import { Toaster } from 'react-hot-toast';
 import ItemDetailContainer from "./components/Items/ItemDetailContainer";

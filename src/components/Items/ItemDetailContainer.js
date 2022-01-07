@@ -24,6 +24,8 @@ const ItemDetailContainer = () => {
                 console.log(product)
             })
     }, [])
+
+    // APLICAR RENDERING TERNARIO
     if (product === undefined) {
         return (
             <div>

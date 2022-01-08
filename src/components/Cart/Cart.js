@@ -3,9 +3,8 @@ import { useContexto } from '../../context/cartContext';
 import CartItems from './CartItems';
 
 const CartItemContainer = () => {
-    const { cart } = useContexto();
+    const { cart, clear } = useContexto();
     console.log(cart)
-    // condicion ? true : false (esto es una expresión, yo sé que retorna un valor, vale algo) ==> TERNARIO
     return (
         <div>
             {cart.length > 0 ? (
@@ -16,6 +15,8 @@ const CartItemContainer = () => {
                         ))}
                     </ul>
                     <h3>Total: $</h3>
+
+                    <button onClick={() => {clear()}}>Vaciar carrito</button>
                 </>
             ) : <p>No hay productos en el carrito</p>}
         </div>

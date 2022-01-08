@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components';
+import { useContexto } from '../../context/cartContext';
 
 const StyledCartItem = styled.div`
 display: flex;
@@ -20,6 +21,10 @@ tr {
 }
 `
 const CartItems = ({ id, image, name, price, quantity }) => {
+
+    const { clear, removeItem, cart } = useContexto();
+    console.log(`cart cuando lo importo: ${cart}`)
+
     return (
         <StyledCartItem>
             <tr><img className='prod-img' src={`${image}`} alt="product" /></tr>
@@ -27,6 +32,7 @@ const CartItems = ({ id, image, name, price, quantity }) => {
             <tr className='prod-price'>Price: $ {price}</tr>
             <tr>X{quantity}</tr>
             <tr>{id}</tr>
+            <button onClick={() => {removeItem(id, cart, quantity)}}>Eliminar</button>
         </StyledCartItem>
     )
 }

@@ -10,34 +10,43 @@ export const CustomProvider = ({children}) => {
     const [total_price, setTotalPrice] = useState(0);
     const [cart, setCart] = useState([]);
 
-    const isInCart = (id) => {
-        return cart.find(prod => prod.id === id);
+    const isInCart = (title) => {
+        return cart.find(prod => prod.title === title);
     };
+
     const addItem = (product, quantity) => {
-        console.log("se ejecuta add item");
-        // actualizar lista de carrito
-        const cart_copy = [...cart,];
-        cart_copy.push(product);
-        setCart(cart_copy);
         // actualizar cart widget
+        console.log(product)
         const total_update = total + quantity;
         setTotal(total_update);
 
-        if (isInCart(product.id)) {
+        if (isInCart(product.title)) {
             // modifico la total (cantidad total)
-            const existing_prod = cart.find(prod => prod.id === product.id);        
+            const prod_index = cart.findIndex(prod => prod.id === product.id);
+            cart[prod_index].quantity += quantity;
         } else {
-            // crear copia del array, pushear a eso y actualizar con setCarrito(copiaActualizada)
+            // actualizar lista de carrito
+            const cart_copy = [...cart,];
+            cart_copy.push(product);
+            setCart(cart_copy);
         }
+        console.log(total_price)
     };
-    const removeItem = (id, cart) => {
-        const item_remove = cart.find(prod => prod.id === id);
-        const cart_copy = cart.filter(prod => {
-            return prod.id != item_remove.id;
-        });
-        setCart(cart_copy);
+
+    const removeItem = (id, cart, quantity) => {
+        const cart_copy = [...cart,];
+        const cart_filtered = cart_copy.filter(prod => prod.id !== id);
+        console.log(`cart filetered: ${cart_filtered}`)
+        setCart(cart_filtered);
+        // cartWidget
+        const total_update = total - quantity;
+        setTotal(total_update);
     };
-    const clear = () => { setCart([]); };
+
+    const clear = () => { 
+        setCart([]);
+        setTotal(0);
+     };
 
     const ContextValue = {
         total,
@@ -57,9 +66,3 @@ export const CustomProvider = ({children}) => {
 export const useContexto = () => {
     return useContext(context)
 };
-
-
-/* 
-carrito: limpiar carrito, borrar del carrito, 
-item detail: agregar al carrito, usar los hooks (en onAdd va a estar agregarAlCarrito, y le pasas cantidad y producto)
-*/

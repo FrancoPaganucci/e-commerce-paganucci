@@ -75,7 +75,6 @@ const ItemDetail = ({ desc, title, price, image, id }) => {
         desc,
         quantity: 0
     }
-
     const onAdd = (contador, setContador) => {
         const contador_copy = contador;
         if (contador > 1) {

@@ -66,7 +66,7 @@ align-items: center;
 `
 const ItemDetail = ({ desc, title, price, image, id }) => {
     const [itemsEstadoInterno, setItemsEstadoInterno] = useState(0);
-    const { addItem } = useContexto();
+    const { addItem, total, setTotal } = useContexto();
     const this_product = {
         id,
         title,
@@ -75,26 +75,26 @@ const ItemDetail = ({ desc, title, price, image, id }) => {
         desc,
         quantity: 0
     }
+
     const onAdd = (contador, setContador) => {
         const contador_copy = contador;
         if (contador > 1) {
-            toast.success(`El usuario agregó ${contador} items al carrito`);
+            toast.success(`Agregaste ${contador} items al carrito`);
         } else {
-            toast.success(`El usuario agregó ${contador} item al carrito`);
+            toast.success(`Agregaste ${contador} item al carrito`);
         }
         setTimeout(() => {
             setItemsEstadoInterno(contador_copy);
             setContador(0);
-        }, 3200)
+        }, 2200)
     }
     // re-renderizar al cambiar el estado interno cuando sucede el onAdd.
     useEffect(() => {
-        console.log("cambió el estado interno!")
         this_product.quantity = itemsEstadoInterno;
+        setTotal(total + itemsEstadoInterno);
     }, [itemsEstadoInterno]);
     
     if (itemsEstadoInterno !== 0) {
-        //this_product.quantity = itemsEstadoInterno;
         return (
             <StyledItemDetail>
                 <div id="info">
@@ -111,7 +111,6 @@ const ItemDetail = ({ desc, title, price, image, id }) => {
             </StyledItemDetail>
         )
     }
-
 
     // renderizar al cargar el item detail APLICAR TERNARIO
     if (image) {

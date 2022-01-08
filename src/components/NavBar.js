@@ -2,7 +2,6 @@ import CartWidget from "./CartWidget";
 import styled from 'styled-components';
 import { theme_primary, theme_secondary } from "../styles/globalColors";
 import { Link, NavLink } from 'react-router-dom';
-
 const StyledHeader = styled.header`
 background-color: ${theme_primary};
 padding: 15px;
@@ -36,23 +35,23 @@ nav {
             text-decoration: underline 1px solid;
         }
     }
-}   
+}
+.hidden {
+    visibility: hidden;
+}
 `
 
 const NavBar = ({links}) => {
-
     return (
         <StyledHeader id="main-header" className="header">
             <NavLink to="/" className="header-left-side">
                 <h1>Buy <span className="it-span">IT</span></h1>
             </NavLink>
-
             <nav>
                 {links.map((elemento,indice)=>{
                     return <Link key={elemento.name+indice} to={elemento.href}>{elemento.name}</Link>
                 })}
             </nav>
-            
             <CartWidget />
         </StyledHeader>
     )

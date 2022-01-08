@@ -16,8 +16,7 @@ const ItemListContainer = ({ usuario, greeting }) => {
     // Llamado a la API con fetch para trae productos en una lista...
     const [lista, setLista] = useState([]);
     const { id } = useParams();
-    console.log(id)
-    // acá tendría que hacer un if que haga el fetch son el parámetro si lo trae y si no trae nada, que me traiga todos los productos... pero se repite mucho código, habría que encontrar la manera
+
     useEffect(() => {
         if (id !== undefined) {
             const traerProductos = async () => {
@@ -31,7 +30,6 @@ const ItemListContainer = ({ usuario, greeting }) => {
             }
             const productos = traerProductos();
             productos.then(response => {
-                console.log(response);
                 setLista(response);
             })
             
@@ -47,12 +45,12 @@ const ItemListContainer = ({ usuario, greeting }) => {
             }
             const productos = traerProductos();
             productos.then(response => {
-                console.log(response);
                 setLista(response);
             })
         }
     }, [id]) // en los detalles de producto, en el array de dependencias tengo que meter el id, el parámetro. como este no cambia, evita que re-renderice cada vez que el usuario vuelve a clickear en la categoría...
 
+    // TERNARIO
     if (lista.length < 1) {
         return (
             <StyledListContainer>

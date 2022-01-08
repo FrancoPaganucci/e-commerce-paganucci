@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { theme_secondary, theme_primary } from '../styles/globalColors';
 import { NavLink } from 'react-router-dom'; // usar en elcarrito
 import { useContexto } from "../context/cartContext";
+import { useEffect } from 'react';
 
 const CartDiv = styled.div`
 #cart-navlink {
@@ -26,14 +27,11 @@ const CartDiv = styled.div`
         font-size: 20px;
     }
 }
-    `
+`
 const CartWidget = () => {
-
     const { total } = useContexto();
-    console.log(total);
-
     return (<>
-        <CartDiv>
+        <CartDiv className={total > 0 ? "show" : "hidden"}>
             <NavLink to="/cart" className="material-icons" id="cart-navlink">
                 <p>{total ? total : 0}</p>
                 shopping_cart

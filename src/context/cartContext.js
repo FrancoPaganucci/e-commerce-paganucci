@@ -3,7 +3,6 @@ import { createContext, useContext, useState } from "react";
 const context = createContext();
 const { Provider } = context;
 
-
 // necesito pasarle children porque en App.js. todo lo que está adentro de CustomProvider lo estoy pasando como prop.
 export const CustomProvider = ({children}) => {
     const [total, setTotal] = useState(0);
@@ -13,49 +12,49 @@ export const CustomProvider = ({children}) => {
     const isInCart = (title) => {
         return cart.find(prod => prod.title === title);
     };
-
     const addItem = (product, quantity) => {
-        // actualizar cart widget
-        console.log(product)
-        const total_update = total + quantity;
-        setTotal(total_update);
-
+        const new_total = total_price + (product.price * quantity);
+        setTotalPrice(new_total);
         if (isInCart(product.title)) {
-            // modifico la total (cantidad total)
             const prod_index = cart.findIndex(prod => prod.id === product.id);
             cart[prod_index].quantity += quantity;
         } else {
-            // actualizar lista de carrito
-            const cart_copy = [...cart,];
+            const cart_copy = [...cart];
+            product.quantity = quantity;
             cart_copy.push(product);
             setCart(cart_copy);
         }
         console.log(total_price)
     };
-
-    const removeItem = (id, cart, quantity) => {
+    const removeItem = (id, cart, quantity, price) => {
         const cart_copy = [...cart,];
         const cart_filtered = cart_copy.filter(prod => prod.id !== id);
-        console.log(`cart filetered: ${cart_filtered}`)
         setCart(cart_filtered);
         // cartWidget
         const total_update = total - quantity;
         setTotal(total_update);
+        // total price
+        const new_total_price = parseFloat(total_price - (quantity * price)).toFixed(2);
+        setTotalPrice(new_total_price);
     };
-
     const clear = () => { 
         setCart([]);
         setTotal(0);
+        setTotalPrice(0);
      };
 
     const ContextValue = {
         total,
+        setTotal,
         cart,
+        setCart,
+        total_price,
+        setTotalPrice,
         addItem,
         removeItem,
         clear
     }
-
+    
     return(
         <Provider value={ContextValue}>
             {children}

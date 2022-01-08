@@ -50,7 +50,6 @@ cursor: pointer;
 }
 `
 const Item = ({ image, name, price, id }) => {
-    console.log(`id en Item: ${id}`)
     return (
             <StyledItem>
                 <Link className='vermas-btn' key={id} to={`/item/${id}`} >

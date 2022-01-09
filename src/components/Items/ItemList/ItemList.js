@@ -1,12 +1,7 @@
 import React from 'react';
-import styled from 'styled-components';
 import Item from './Item';
+import { StyledItemList } from './ItemListStyled';
 
-const StyledItemList = styled.div`
-display: flex;
-flex-wrap: wrap;
-justify-content: space-around;
-`
 const ItemList = ({items}) => {
     console.log(items);
     if (items.length > 0) {

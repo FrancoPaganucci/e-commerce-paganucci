@@ -1,72 +1,14 @@
 import React from 'react'
-import ItemCount from './ItemCount';
+import ItemCount from '../ItemCount';
 import { toast } from 'react-hot-toast';
-import  styled  from 'styled-components';
-import { useState, useEffect, cleanup } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { theme_secondary, theme_primary } from '../../styles/globalColors';
-import { useContexto } from '../../context/cartContext';
+import { useContexto } from '../../../context/cartContext';
+import { StyledItemDetail } from './ItemDetailStyled';
 
-const StyledItemDetail = styled.div`
-display: flex;
-flex-direction: column;
-padding: 60px;
-align-items: center;
-#info {
-    display: flex;
-    align-items: center;
-    column-gap: 240px;
-    margin-top: 50px;
-    margin-left: 30px
-}
-#left-side {
-    display: flex;
-    flex-direction: column;
-    img {
-        width: 350px;
-    }
-}
-#right-side {
-    display: flex;
-    flex-direction: column;
-    h1 {
-        margin-bottom: 15px;
-        font-weight: 600;
-        letter-spacing: -0.4px;
-    }
-    h2 {
-        padding-bottom: 30px;
-    }
-    h3 {
-        width: 80%;
-        text-align: justify;
-        letter-spacing: 0.2px;
-        line-height: 29px;
-    }
-    .finalizar-compra-btn {
-        margin: 70px 0;
-        background-color: ${theme_primary};
-        color: white;
-        text-decoration: none;
-        width: 250px;
-        text-align: center;
-        font-size: 20px;
-        padding: 13px 0px;
-        border-radius: 10px;
-        transition: all .3s ease-in-out;
-        &:hover {
-            background-color: ${theme_secondary};
-            color: ${theme_primary};
-            cursor: pointer;
-            transition: all .3s ease-in-out;
-        }
-    }
-}
-
-`
 const ItemDetail = ({ desc, title, price, image, id }) => {
     const [itemsEstadoInterno, setItemsEstadoInterno] = useState(0);
-    const { addItem, total, setTotal } = useContexto();
+    const { total, setTotal } = useContexto();
     const this_product = {
         id,
         title,
@@ -92,6 +34,7 @@ const ItemDetail = ({ desc, title, price, image, id }) => {
     useEffect(() => {
         this_product.quantity = itemsEstadoInterno;
         setTotal(total + itemsEstadoInterno);
+        
     }, [itemsEstadoInterno]);
     
     if (itemsEstadoInterno !== 0) {
@@ -105,7 +48,7 @@ const ItemDetail = ({ desc, title, price, image, id }) => {
                     <h1>{title}</h1>
                         <h2>Price: ${`${price}`}</h2>
                         <h3>{desc}</h3>
-                        <Link className='finalizar-compra-btn' to='/cart' onClick={()=>{addItem(this_product, itemsEstadoInterno)}} >Finalizar compra</Link>
+                        <Link className='finalizar-compra-btn' to='/cart' >Finalizar compra</Link>
                     </div>
                 </div>
             </StyledItemDetail>
@@ -124,7 +67,7 @@ const ItemDetail = ({ desc, title, price, image, id }) => {
                         <h1>{title}</h1>
                         <h2>Price: ${`${price}`}</h2>
                         <h3>{desc}</h3>
-                        <ItemCount stock={5} initial={1} onAdd={onAdd} />
+                        <ItemCount stock={5} initial={1} onAdd={onAdd} this_product={this_product} />
                     </div>
                 </div>
             </StyledItemDetail>

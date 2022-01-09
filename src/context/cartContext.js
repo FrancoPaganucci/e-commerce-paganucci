@@ -13,8 +13,8 @@ export const CustomProvider = ({children}) => {
         return cart.find(prod => prod.title === title);
     };
     const addItem = (product, quantity) => {
-        const new_total = total_price + (product.price * quantity);
-        setTotalPrice(new_total);
+        console.log(total_price)
+        setTotalPrice(total_price + (product.price * quantity));
         if (isInCart(product.title)) {
             const prod_index = cart.findIndex(prod => prod.id === product.id);
             cart[prod_index].quantity += quantity;
@@ -24,9 +24,9 @@ export const CustomProvider = ({children}) => {
             cart_copy.push(product);
             setCart(cart_copy);
         }
-        console.log(total_price)
     };
     const removeItem = (id, cart, quantity, price) => {
+        console.log(total_price)
         const cart_copy = [...cart,];
         const cart_filtered = cart_copy.filter(prod => prod.id !== id);
         setCart(cart_filtered);
@@ -34,13 +34,13 @@ export const CustomProvider = ({children}) => {
         const total_update = total - quantity;
         setTotal(total_update);
         // total price
-        const new_total_price = parseFloat(total_price - (quantity * price)).toFixed(2);
+        const new_total_price = total_price - price * quantity;
         setTotalPrice(new_total_price);
     };
     const clear = () => { 
         setCart([]);
         setTotal(0);
-        setTotalPrice(0);
+        setTotalPrice(0)
      };
 
     const ContextValue = {
@@ -54,7 +54,7 @@ export const CustomProvider = ({children}) => {
         removeItem,
         clear
     }
-    
+
     return(
         <Provider value={ContextValue}>
             {children}

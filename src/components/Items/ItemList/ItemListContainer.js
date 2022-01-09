@@ -1,17 +1,8 @@
-// shortcut: rafce (React Arrow Function Component Export)
-import styled from 'styled-components';
 import ItemList from './ItemList';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { StyledListContainer } from './ItemListContainerStyled';
 
-const StyledListContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    margin: 0 auto;
-    align-items: center;
-    padding: 60px 20px;
-    text-align: center;
-`
 const ItemListContainer = ({ usuario, greeting }) => {
     // Llamado a la API con fetch para trae productos en una lista...
     const [lista, setLista] = useState([]);

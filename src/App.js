@@ -1,9 +1,9 @@
-import ItemListContainer from "./components/Items/ItemListContainer";
-import NavBar from "./components/NavBar";
+import ItemListContainer from "./components/Items/ItemList/ItemListContainer";
+import NavBar from "./components/Navbar/NavBar";
 import Cart from "./components/Cart/Cart"
 import { createGlobalStyle } from 'styled-components';
 import { Toaster } from 'react-hot-toast';
-import ItemDetailContainer from "./components/Items/ItemDetailContainer";
+import ItemDetailContainer from "./components/Items/ItemDetail/ItemDetailContainer";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { CustomProvider } from "./context/cartContext";
 

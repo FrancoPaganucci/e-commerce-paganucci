@@ -2,7 +2,9 @@ import styled from 'styled-components';
 
 export const StyledCartItem = styled.div`
 table {
+    width: 95%;
     tbody {
+        width: 100%;
         display: flex;
         align-items: center;
         column-gap: 50px;
@@ -15,7 +17,10 @@ table {
             transition: all .2s ease-in-out;
         }
     tr {
-        width: 200px;
+        width: 100%;
+        button {
+            cursor: pointer;
+        }
     }
     .prod-img {
         max-width: 95px; 

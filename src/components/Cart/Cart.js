@@ -16,8 +16,10 @@ const CartItemContainer = () => {
                             <CartItem key={item.id} name={item.title} price={item.price} image={item.image} id={item.id} quantity={item.quantity} />
                         ))}
                     </ul>
-                    <h3>Total: ${total_price.toFixed(2)}</h3>
-                    <button onClick={() => { clear() }}>Vaciar carrito</button>
+                    <div className="bottom-div">
+                        <h3 className='total-price'>Total: ${total_price.toFixed(2)}</h3>
+                        <button className='btn-empty-cart' onClick={() => { clear() }}>Vaciar carrito</button>
+                    </div>
                 </>
             ) : (
                 <>

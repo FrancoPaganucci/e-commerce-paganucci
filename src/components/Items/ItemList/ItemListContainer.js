@@ -41,24 +41,23 @@ const ItemListContainer = ({ usuario, greeting }) => {
         }
     }, [id]) // en los detalles de producto, en el array de dependencias tengo que meter el id, el parámetro. como este no cambia, evita que re-renderice cada vez que el usuario vuelve a clickear en la categoría...
 
-    // TERNARIO
-    if (lista.length < 1) {
-        return (
-            <StyledListContainer>
-                <h1>Bienvenido a Buy IT!</h1>
-                <h1>{greeting}</h1>
-                <h1 style={{marginTop: 60}}>CARGANDO PRODUCTOS...</h1>
-            </StyledListContainer>
-        )
-    } else {
-        return (
-            <StyledListContainer>
-                <h1>Bienvenido a Buy IT!</h1>
-                <h1>{greeting}</h1>
-                <ItemList items={lista} />
-            </StyledListContainer>
-        )
-    }
+    return (
+        <StyledListContainer>
+            {lista.length < 1 ? (
+                <>
+                    <h1>Bienvenido a Buy IT!</h1>
+                    <h1>{greeting}</h1>
+                    <h1 style={{ marginTop: 60 }}>CARGANDO PRODUCTOS...</h1>
+                </>
+            ) : (
+                <>
+                    <h1>Bienvenido a Buy IT!</h1>
+                    <h1>{greeting}</h1>
+                    <ItemList items={lista} />
+                </>
+            )
+        } </StyledListContainer>
+    )
 };
 
 export default ItemListContainer;

@@ -25,20 +25,17 @@ const ItemDetailContainer = () => {
             })
     }, [])
 
-    // APLICAR RENDERING TERNARIO
-    if (product === undefined) {
-        return (
-            <div>
+    return (
+        <>
+            {product === undefined ? (
                 <h1>CARGANDO DETALLE DE PRODUCTO...</h1>
-            </div>
-        )
-    } else {
-        return (
-            <div>
-                <ItemDetail desc={product.description} title={product.title} price={product.price} image={product.image} id={product.id}/>
-            </div>
-        )
-    }
+            ) : (
+                <div>
+                    <ItemDetail desc={product.description} title={product.title} price={product.price} image={product.image} id={product.id} />
+                </div>
+            )}
+        </>
+    )
 }
 
 export default ItemDetailContainer;

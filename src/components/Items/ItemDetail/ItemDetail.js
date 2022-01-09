@@ -48,17 +48,17 @@ const ItemDetail = ({ desc, title, price, image, id }) => {
                     <h1>{title}</h1>
                         <h2>Price: ${`${price}`}</h2>
                         <h3>{desc}</h3>
-                        <Link className='finalizar-compra-btn' to='/cart' >Finalizar compra</Link>
+                        <Link className='ctas-post-compra' to='/cart' >Finalizar compra</Link>
+                        <Link className='ctas-post-compra' to='/products' >Seguir comprando</Link>
                     </div>
                 </div>
             </StyledItemDetail>
         )
     }
 
-    // renderizar al cargar el item detail APLICAR TERNARIO
-    if (image) {
-        return (
-            <StyledItemDetail>
+    return (
+        <StyledItemDetail>
+            {image ? (
                 <div id="info">
                     <div id="left-side">
                         <img src={`${image}`} alt={`${title}`} />
@@ -70,15 +70,13 @@ const ItemDetail = ({ desc, title, price, image, id }) => {
                         <ItemCount stock={5} initial={1} onAdd={onAdd} this_product={this_product} />
                     </div>
                 </div>
-            </StyledItemDetail>
-        )
-    } else {
-        return (
-            <StyledItemDetail>
+            ) : (
                 <h1>LOADING PRODUCT DETAIL...</h1>
-            </StyledItemDetail>
-        )
-    }
+            )
+            }
+        </StyledItemDetail>
+    )
 }
+
 
 export default ItemDetail;

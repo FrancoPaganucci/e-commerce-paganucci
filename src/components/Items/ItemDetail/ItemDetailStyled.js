@@ -4,7 +4,7 @@ import { theme_secondary, theme_primary } from '../../../styles/globalColors';
 export const StyledItemDetail = styled.div`
 display: flex;
 flex-direction: column;
-padding: 60px;
+padding: 30px 60px;
 align-items: center;
 #info {
     display: flex;
@@ -36,9 +36,10 @@ align-items: center;
         text-align: justify;
         letter-spacing: 0.2px;
         line-height: 29px;
+        margin-bottom: 20px;
     }
-    .finalizar-compra-btn {
-        margin: 70px 0;
+    .ctas-post-compra {
+        margin: 10px 0;
         background-color: ${theme_primary};
         color: white;
         text-decoration: none;

@@ -2,6 +2,9 @@ import ItemList from './ItemList';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { StyledListContainer } from './ItemListContainerStyled';
+import { db } from "../../../firebase";
+
+console.log(db);
 
 const ItemListContainer = ({ usuario, greeting }) => {
     // Llamado a la API con fetch para trae productos en una lista...

@@ -13,7 +13,6 @@ export const CustomProvider = ({children}) => {
         return cart.find(prod => prod.title === title);
     };
     const addItem = (product, quantity) => {
-        console.log(total_price)
         setTotalPrice(total_price + (product.price * quantity));
         if (isInCart(product.title)) {
             const prod_index = cart.findIndex(prod => prod.id === product.id);
@@ -26,7 +25,6 @@ export const CustomProvider = ({children}) => {
         }
     };
     const removeItem = (id, cart, quantity, price) => {
-        console.log(total_price)
         const cart_copy = [...cart,];
         const cart_filtered = cart_copy.filter(prod => prod.id !== id);
         setCart(cart_filtered);

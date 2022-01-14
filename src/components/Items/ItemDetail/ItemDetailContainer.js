@@ -2,27 +2,21 @@ import React from 'react'
 import ItemDetail from '../ItemDetail/ItemDetail';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { db } from '../../../firebase';
+import { collection, getDoc, doc } from 'firebase/firestore';
+
+
 
 const ItemDetailContainer = () => {
     const { id } = useParams();
     const [product, setProduct] = useState({}); 
     
     useEffect(() => {
-        const traerProducto = async () => {
-            try {
-                 const resp = await fetch(`https://fakestoreapi.com/products/${id}`); 
-                 const info = await resp.json();
-                 return info;
-            } catch (error) {
-                console.log(error);
-            }
-            
-        }
-        const productoPromise = traerProducto()
-            productoPromise.then(response => {
-                setProduct(response);
-                console.log(product)
-            })
+        const products_collection = collection(db, "productos");
+        const refDoc = doc(products_collection, id);
+        getDoc(refDoc)
+            .then(prod => {setProduct(prod.data())})
+            .catch(err => console.log(err))
     }, [])
 
     return (

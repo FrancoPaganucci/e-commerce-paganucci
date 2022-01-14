@@ -14,7 +14,6 @@ const firebaseConfig = {
   const app = initializeApp(firebaseConfig);
   export const db = getFirestore(app);
 
-/*  Todo el tiempo necesitás esto, cada vez que consultes, en cada archivo... Entonces esto ya se puede dejar seteado acá.
-1) obtener una referencia a la db
-2) obtener una referencia a la colección
-*/
+//Todo el tiempo necesitás esto, cada vez que consultes, en cada archivo... Entonces esto ya se puede dejar seteado acá.
+//1) obtener una referencia a la db
+//2) obtener una referencia a la colección

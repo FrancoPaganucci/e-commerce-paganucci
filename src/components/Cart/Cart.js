@@ -3,31 +3,53 @@ import { useContexto } from '../../context/cartContext';
 import CartItem from './CartItem';
 import { Link } from 'react-router-dom';
 import { StyledCartItemContainer } from './CartStyled';
-import { addDoc, collection, serverTimestamp } from "firebase/firestore"
+import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
 import { db } from "../../firebase";
 
 const CartItemContainer = () => {
     const { cart, clear, total_price } = useContexto();
-    console.log(cart)
     
-    const finalizarCompra = () => {
+    const finalizarCompra = async () => {
         console.log("guardando la compra en la db");
-
-
+        console.log(total_price)
+        console.log(cart)
+        console.log(db)
         const ventasCollection = collection(db, "ventas")
-        addDoc(ventasCollection, {
+        console.log(ventasCollection)
+
+
+        try {
+            const result = await addDoc(ventasCollection, {
+                buyer : {
+                    name : "Juan",
+                    lastName : "Perez",
+                    email : "mail@mail"
+                },
+                items : cart ,
+                date : serverTimestamp(),
+                total : total_price
+            })
+            console.log(result)
+            clear();
+            return result
+        } catch (error) {
+            console.log(error)
+        }
+        /*const result = await addDoc(ventasCollection, {
             buyer : {
-                name : "Nombre",
-                lasName : "Apellido",
-                email : "mail@mail.com"
+                name : "Juan",
+                lastName : "Perez",
+                email : "mail@mail"
             },
-            items : cart,
+            items : cart ,
             date : serverTimestamp(),
-            total : 100
+            total : total_price
         }).then(resultado => {
             console.log(resultado);
+            console.log("Document written with ID: ", resultado.id)
             clear();
-        }).catch(err => console.log(err));
+        }).catch(err => console.log(err));*/
+        
     }
 
 
@@ -42,7 +64,7 @@ const CartItemContainer = () => {
                     </ul>
                     <div className="bottom-div">
                         <h3 className='total-price'>Total: ${total_price.toFixed(2)}</h3>
-                        <button className='btn-empty-cart' onClick={() => { finalizarCompra() }}>Finalizar compra</button>
+                        <button className='btn-empty-cart' onClick={finalizarCompra}>Finalizar compra</button>
                         <button className='btn-empty-cart' onClick={() => { clear() }}>Vaciar carrito</button>
                     </div>
                 </>

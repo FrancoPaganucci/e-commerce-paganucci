@@ -3,13 +3,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { StyledListContainer } from './ItemListContainerStyled';
 import { db } from "../../../firebase";
-import { getDocs, query, collection, where} from "firebase/firestore"
-
-
-
-
-
-//si querés traer toda una colección: getDocs(collection) sin usar el query
+import { getDocs, query, collection, where, addDoc} from "firebase/firestore"
 
 
 const ItemListContainer = ({ usuario, greeting }) => {
@@ -18,23 +12,9 @@ const ItemListContainer = ({ usuario, greeting }) => {
     const { id } = useParams();
 
     useEffect(() => {
-
+        // traer productos al front consultando Firebase
         const products_collection = collection(db, "productos");
-
         if (id !== undefined) {
-            /*const traerProductos = async () => {
-                try {
-                    const resp = await fetch(`https://fakestoreapi.com/products/category/${id}?limit=5`);
-                    const info = await resp.json();
-                    return info;
-                } catch (error) {
-                    console.log(error);
-                }
-            }
-            const productos = traerProductos();
-            productos.then(response => {
-                setLista(response);
-            })*/
             const consulta = query(products_collection, where("category", "==", id))
             getDocs(consulta)
             getDocs(consulta)
@@ -77,18 +57,38 @@ const ItemListContainer = ({ usuario, greeting }) => {
 export default ItemListContainer;
 
 
+/*
+        /// HELPER FUNCTION ///
+        ===== Código implementado para importar la información de Fake Store directamente a Firestore ====
+        ====> ****Ejecutada dentro del useEffect de ItemListContainer.
 
 
-/*const traerProductos = async () => {
-                try {
-                    const resp = await fetch('https://fakestoreapi.com/products?limit=9');
-                    const info = await resp.json();
-                    return info;
-                } catch (error) {
-                    console.log(error);
-                }
+        const [importList, setImportList] = useState([])
+
+
+
+        ****const traerProductos = async () => {
+            try {
+                const resp = await fetch('https://fakestoreapi.com/products');
+                const info = await resp.json();
+                return info;
+            } catch (error) {
+                console.log(error);
             }
-            const productos = traerProductos();
-            productos.then(response => {
-                setLista(response);
-            })*/
+        }
+        const productos = traerProductos();
+        productos.then(response => {
+            setImportList(response);
+            const collectionRef = collection(db,"productos")
+            importList.map(({ category, description, image, price, title }) => {
+                addDoc(collectionRef, {
+                    category,
+                    description,
+                    image,
+                    price,
+                    stock : 50,
+                    title 
+                })
+                console.log(`producto ${title} cargado a Firestore`)
+            })
+        }).catch(err => console.log(err))*/

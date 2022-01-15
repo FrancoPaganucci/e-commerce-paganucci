@@ -11,13 +11,8 @@ const CartItemContainer = () => {
     
     const finalizarCompra = async () => {
         console.log("guardando la compra en la db");
-        console.log(total_price)
-        console.log(cart)
-        console.log(db)
+
         const ventasCollection = collection(db, "ventas")
-        console.log(ventasCollection)
-
-
         try {
             const result = await addDoc(ventasCollection, {
                 buyer : {

@@ -25,7 +25,7 @@ const ItemDetailContainer = () => {
                 <h1>CARGANDO DETALLE DE PRODUCTO...</h1>
             ) : (
                 <div>
-                    <ItemDetail desc={product.description} title={product.title} price={product.price} image={product.image} id={product.id} />
+                    <ItemDetail desc={product.description} title={product.title} price={product.price} image={product.image} id={id} />
                 </div>
             )}
         </>

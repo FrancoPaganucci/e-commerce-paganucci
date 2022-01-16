@@ -34,7 +34,6 @@ const ItemDetail = ({ desc, title, price, image, id }) => {
     useEffect(() => {
         this_product.quantity = itemsEstadoInterno;
         setTotal(total + itemsEstadoInterno);
-        
     }, [itemsEstadoInterno]);
     
     if (itemsEstadoInterno !== 0) {

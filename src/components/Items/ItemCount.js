@@ -7,13 +7,11 @@ const ItemCount = ({ stock, initial, onAdd, this_product}) => {
     const { addItem, total_price, setTotalPrice } = useContexto(); 
     
     function restarCounter() {
-        console.log("restar");
         if (contador > 1) {
             setContador(contador - 1);
         }
     }
     function sumarCounter() {
-        console.log("sumar")
         if (contador < stock) {
             setContador(contador + 1); 
         }

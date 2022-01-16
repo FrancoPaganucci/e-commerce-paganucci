@@ -5,13 +5,18 @@ import { Link } from 'react-router-dom';
 import { StyledCartItemContainer } from './CartStyled';
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
 import { db } from "../../firebase";
+import { useState, useEffect } from 'react';
+import Ticket from '../Ticket/Ticket';
+import { toast } from 'react-hot-toast';
 
 const CartItemContainer = () => {
     const { cart, clear, total_price } = useContexto();
+    const [ticket, setTicket] = useState([]);
+    const [ticket_price, setTicketPrice] = useState();
     
     const finalizarCompra = async () => {
         console.log("guardando la compra en la db");
-
+        setTicketPrice(total_price)
         const ventasCollection = collection(db, "ventas")
         try {
             const result = await addDoc(ventasCollection, {
@@ -24,27 +29,24 @@ const CartItemContainer = () => {
                 date : serverTimestamp(),
                 total : total_price
             })
-            console.log(result)
+            toast.success('Tu compra se ha registrado con éxito!')
+            setTicket(result);
             clear();
-            return result
         } catch (error) {
             console.log(error)
         }
-        /*const result = await addDoc(ventasCollection, {
-            buyer : {
-                name : "Juan",
-                lastName : "Perez",
-                email : "mail@mail"
-            },
-            items : cart ,
-            date : serverTimestamp(),
-            total : total_price
-        }).then(resultado => {
-            console.log(resultado);
-            console.log("Document written with ID: ", resultado.id)
-            clear();
-        }).catch(err => console.log(err));*/
-        
+    }
+
+    useEffect(() => {
+    }, [ticket])
+
+    if (ticket.length !== 0) {
+        const ticket_id = ticket.id
+        return (
+            <StyledCartItemContainer>
+                <Ticket ticket_price={ticket_price} ticket_id={ticket_id}/>
+            </StyledCartItemContainer>
+        )
     }
 
 

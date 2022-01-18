@@ -33,7 +33,7 @@ const CartItemContainer = () => {
             setTicket(result);
             clear();
         } catch (error) {
-            console.log(error)
+            console.log(error);
         }
     }
 

@@ -33,6 +33,7 @@ const CartItemContainer = () => {
             clear();
         } catch (error) {
             console.log(error);
+            toast.error('Lo sentimos. No se pudo registrar tu compra. Por favor, intenta de nuevo.')
         }
     }
 
@@ -40,14 +41,12 @@ const CartItemContainer = () => {
     }, [ticket])
 
     if (ticket.length !== 0) {
-        const ticket_id = ticket.id
         return (
             <StyledCartItemContainer>
-                <Ticket ticket_price={ticket_price} ticket_id={ticket_id}/>
+                <Ticket ticket_price={ticket_price} ticket_id={ticket.id}/>
             </StyledCartItemContainer>
         )
     }
-
 
     return (
         <StyledCartItemContainer>

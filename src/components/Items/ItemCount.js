@@ -4,7 +4,7 @@ import { StyledItemCount } from './ItemCountStyled';
 
 const ItemCount = ({ stock, initial, onAdd, this_product}) => {
     let [contador, setContador] = useState(initial);
-    const { addItem, total_price, setTotalPrice } = useContexto(); 
+    const { addItem } = useContexto(); 
     
     function restarCounter() {
         if (contador > 1) {

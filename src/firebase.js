@@ -1,4 +1,3 @@
-// Importar la función de inicialización de la app
 import { initializeApp } from "firebase/app"
 import { getFirestore } from "firebase/firestore"
 

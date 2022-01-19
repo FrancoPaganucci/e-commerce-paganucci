@@ -8,9 +8,6 @@ margin: 30px;
     flex-direction: column;
     row-gap: 10px;
     align-items: end;
-    .total-price {
-        
-    }
     .btn-empty-cart {
         width: 150px;
         margin: 10px 0;
@@ -31,7 +28,6 @@ margin: 30px;
         }
     }
 }
-
 .empty-cart-container {
     display: flex;
     flex-direction: column;

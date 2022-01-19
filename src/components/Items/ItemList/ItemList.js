@@ -12,7 +12,7 @@ const ItemList = ({ items }) => {
                     ))}
                 </>
             ) : (
-                <h1>LOADING...</h1>
+                <h1>Algo salió mal y no se pueden cargar los productos...</h1>
             )}
         </StyledItemList>
     )

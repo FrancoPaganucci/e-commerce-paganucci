@@ -26,5 +26,4 @@ table {
         max-width: 95px; 
     }
 }
-
 `

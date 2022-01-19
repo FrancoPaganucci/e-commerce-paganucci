@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { StyledListContainer } from './ItemListContainerStyled';
 import { db } from "../../../firebase";
 import { getDocs, query, collection, where } from "firebase/firestore"
-
+import { toast } from 'react-hot-toast'
 
 const ItemListContainer = ({ greeting }) => {
     const [lista, setLista] = useState([]);
@@ -21,24 +21,19 @@ const ItemListContainer = ({ greeting }) => {
             })
             .catch(err => {
                 console.log(err)
+                toast.error('Algo salió mal :(')
             })
 
     }, [id])
 
     return (
         <StyledListContainer>
+            <h1>Bienvenido a Buy IT!</h1>
+            <h1>{greeting}</h1>
             {lista.length < 1 ? (
-                <>
-                    <h1>Bienvenido a Buy IT!</h1>
-                    <h1>{greeting}</h1>
-                    <h1 style={{ marginTop: 60 }}>CARGANDO PRODUCTOS...</h1>
-                </>
+                <h1 style={{ marginTop: 60 }}>CARGANDO PRODUCTOS...</h1>
             ) : (
-                <>
-                    <h1>Bienvenido a Buy IT!</h1>
-                    <h1>{greeting}</h1>
-                    <ItemList items={lista} />
-                </>
+                <ItemList items={lista} />
             )
         } </StyledListContainer>
     )

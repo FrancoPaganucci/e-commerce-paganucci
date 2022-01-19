@@ -30,7 +30,6 @@ const CartItem = ({ id, image, name, price, quantity }) => {
                     </tr>
                     <tr>
                         <td>
-                            {/*hay un bug con el eliminar, cuando se borra solo un producto del carrito te lo toma como que se vació por completo*/}
                             <button onClick={() => { removeItem(id, cart, quantity, price) }}>Eliminar</button>
                         </td>
                     </tr>

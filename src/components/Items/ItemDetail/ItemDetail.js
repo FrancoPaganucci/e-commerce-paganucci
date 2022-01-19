@@ -30,30 +30,11 @@ const ItemDetail = ({ desc, title, price, image, id }) => {
             setContador(0);
         }, 2200)
     }
-    // re-renderizar al cambiar el estado interno cuando sucede el onAdd.
+    
     useEffect(() => {
         this_product.quantity = itemsEstadoInterno;
         setTotal(total + itemsEstadoInterno);
     }, [itemsEstadoInterno]);
-    
-    if (itemsEstadoInterno !== 0) {
-        return (
-            <StyledItemDetail>
-                <div id="info">
-                    <div id="left-side">
-                        <img src={`${image}`} alt={`${title}`} />
-                    </div>
-                    <div id="right-side">
-                    <h1>{title}</h1>
-                        <h2>Price: ${`${price}`}</h2>
-                        <h3>{desc}</h3>
-                        <Link className='ctas-post-compra' to='/cart' >Finalizar compra</Link>
-                        <Link className='ctas-post-compra' to='/products' >Seguir comprando</Link>
-                    </div>
-                </div>
-            </StyledItemDetail>
-        )
-    }
 
     return (
         <StyledItemDetail>
@@ -66,16 +47,22 @@ const ItemDetail = ({ desc, title, price, image, id }) => {
                         <h1>{title}</h1>
                         <h2>Price: ${`${price}`}</h2>
                         <h3>{desc}</h3>
-                        <ItemCount stock={5} initial={1} onAdd={onAdd} this_product={this_product} />
+                        {itemsEstadoInterno !== 0 ? (
+                            <>
+                                <Link className='ctas-post-compra' to='/cart' >Finalizar compra</Link>
+                                <Link className='ctas-post-compra' to='/products' >Seguir comprando</Link>
+                            </>
+                        ) : (
+                            <ItemCount stock={5} initial={1} onAdd={onAdd} this_product={this_product} />
+                        )}
                     </div>
                 </div>
             ) : (
-                <h1>LOADING PRODUCT DETAIL...</h1>
+                <h1>CARGANDO EL DETALLE DEL PRODUCTO...</h1>
             )
             }
         </StyledItemDetail>
     )
 }
-
 
 export default ItemDetail;

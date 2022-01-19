@@ -4,8 +4,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { db } from '../../../firebase';
 import { collection, getDoc, doc } from 'firebase/firestore';
-
-
+import toast from 'react-hot-toast';
 
 const ItemDetailContainer = () => {
     const { id } = useParams();
@@ -16,7 +15,10 @@ const ItemDetailContainer = () => {
         const refDoc = doc(products_collection, id);
         getDoc(refDoc)
             .then(prod => {setProduct(prod.data())})
-            .catch(err => console.log(err))
+            .catch(err => {
+                console.log(err)
+                toast.error('Algo salió mal :(')
+            })
     }, [])
 
     return (

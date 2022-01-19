@@ -1,9 +1,34 @@
-# Notas sobre el proyecto
+# Documentación del proyecto
 
 Esta aplicación consiste en una plataforma de e-commerce que, utilizando llamadas a una API, trae productos con información y los presenta para que el usuario pueda "comprarlos", navegando por categorías y visualizando el detalle de cada uno de los productos. 
-Las categorías en esta primera entrega intermedia sigue la estructura de la API de Fakestore ("Electronics", "Jewelery").
+Las categorías en esta primera entrega toman la estructura de la API de Fakestore ("Electronics", "Jewelery").
 
-Se incluyeron las dependencias "styled-components" para darle estilos con css a los componentes de una manera en que se puedan visualizar en su totalidad, es decir, dentro de cada Componente.js uno puede observar la estructura, la lógica, y los estilos del mismo, lo que hace más fácil su lectura y entendimiento. Además, se incluyó "react-hot-toast" para mostrar notificaciones en operaciones específicas, como por ejemplo un mensaje de éxito al agregar x cantidad de productos al carrito de compras. La razón de esta decisión radica en aprovechar estas notificaciones para mejorar la experiencia de usuario.
+Se incluyó las dependencia "styled-components" para darle estilos con css a los componentes de una manera en que se puedan visualizar individualmente, es decir, a cada Componente.js le corresponde un archivo en el que se pueden observar los estilos del mismo, lo que hace más fácil su lectura y entendimiento. Además, se incluyó "react-hot-toast" para mostrar notificaciones en operaciones específicas, como por ejemplo un mensaje de éxito al agregar "x" cantidad de productos al carrito de compras. La razón de esta decisión radica en aprovechar estas notificaciones para mejorar la experiencia de usuario.
+
+## Puntos a incluir
+
+* Descripción del proyecto
+
+* Descripción de las tecnologías usadas (revisar no tener librerías sin usar instaladas, en ese caso desinstalarlas)
+
+* (opcional) Descripición de los componentes más complejos (como el context por ejemplo)
+
+* Croquis con la estructura de los componentes
+
+* CÓMO SE USA / CÓMO LO PRUEBO (instrucciones para clonar, instalar, correr, etc)
+1. Clona el repositorio
+```
+git clone http://...
+```
+2. Ubicarse en la carpeta
+```
+cd proyecto
+```
+* Info/descripción profesional a modo de portfolio, con links a redes (LinkedIn, otros proyectos, etc)
+[titulo](https://link.com)
+[titulo](https://link.com)
+
+* Cosas pendientes: modificaciones por hacer
 
 # Getting Started with Create React App
 

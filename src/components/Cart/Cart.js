@@ -15,7 +15,6 @@ const CartItemContainer = () => {
     const [ticket_price, setTicketPrice] = useState();
     
     const finalizarCompra = async () => {
-        console.log("guardando la compra en la db");
         setTicketPrice(total_price)
         const ventasCollection = collection(db, "ventas")
         try {

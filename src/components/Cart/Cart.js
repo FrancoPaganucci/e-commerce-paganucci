@@ -7,6 +7,7 @@ import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
 import { db } from "../../firebase";
 import { useState, useEffect } from 'react';
 import Ticket from '../Ticket/Ticket';
+import Form from '../Form/Form';
 import { toast } from 'react-hot-toast';
 
 const CartItemContainer = () => {
@@ -14,15 +15,19 @@ const CartItemContainer = () => {
     const [ticket, setTicket] = useState([]);
     const [ticket_price, setTicketPrice] = useState();
     
-    const finalizarCompra = async () => {
+    async function finalizarCompra(first_name, last_name, email) {
+        console.log("ejecutando finalizar compra")
+        console.log(`name en función: ${first_name}`)
+        console.log(`Lastname en función: ${last_name}`)
+        console.log(`email en función: ${email}`)
         setTicketPrice(total_price)
         const ventasCollection = collection(db, "ventas")
         try {
             const result = await addDoc(ventasCollection, {
                 buyer : {
-                    name : "Juan",
-                    lastName : "Perez",
-                    email : "mail@mail"
+                    name : first_name,
+                    lastName : last_name,
+                    email : email
                 },
                 items : cart ,
                 date : serverTimestamp(),
@@ -57,9 +62,11 @@ const CartItemContainer = () => {
                             <CartItem key={item.id} name={item.title} price={item.price} image={item.image} id={item.id} quantity={item.quantity} />
                         ))}
                     </ul>
+
+                    <Form finalizarCompra={finalizarCompra} />
+
                     <div className="bottom-div">
                         <h3 className='total-price'>Total: ${total_price.toFixed(2)}</h3>
-                        <button className='btn-empty-cart' onClick={finalizarCompra}>Finalizar compra</button>
                         <button className='btn-empty-cart' onClick={() => { clear() }}>Vaciar carrito</button>
                     </div>
                 </>

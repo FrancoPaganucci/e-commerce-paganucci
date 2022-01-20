@@ -49,7 +49,7 @@ const ItemDetail = ({ desc, title, price, image, id }) => {
                         <h3>{desc}</h3>
                         {itemsEstadoInterno !== 0 ? (
                             <>
-                                <Link className='ctas-post-compra' to='/cart' >Finalizar compra</Link>
+                                <Link className='ctas-post-compra' to='/cart' >Ir al carrito</Link>
                                 <Link className='ctas-post-compra' to='/products' >Seguir comprando</Link>
                             </>
                         ) : (

@@ -11,15 +11,12 @@ import Form from '../Form/Form';
 import { toast } from 'react-hot-toast';
 
 const CartItemContainer = () => {
-    const { cart, clear, total_price } = useContexto();
+    const { cart, total_price, clear } = useContexto();
     const [ticket, setTicket] = useState([]);
     const [ticket_price, setTicketPrice] = useState();
     
-    async function finalizarCompra(first_name, last_name, email) {
-        console.log("ejecutando finalizar compra")
-        console.log(`name en función: ${first_name}`)
-        console.log(`Lastname en función: ${last_name}`)
-        console.log(`email en función: ${email}`)
+    
+    const finalizarCompra = async (first_name, last_name, email) => {
         setTicketPrice(total_price)
         const ventasCollection = collection(db, "ventas")
         try {
@@ -33,7 +30,7 @@ const CartItemContainer = () => {
                 date : serverTimestamp(),
                 total : total_price
             })
-            toast.success('Tu compra se ha registrado con éxito!')
+            toast.success('Tu compra se ha registrado con éxito!');
             setTicket(result);
             clear();
         } catch (error) {
@@ -43,6 +40,7 @@ const CartItemContainer = () => {
     }
 
     useEffect(() => {
+        console.log("se modificó el ticket")
     }, [ticket])
 
     if (ticket.length !== 0) {
@@ -67,7 +65,8 @@ const CartItemContainer = () => {
 
                     <div className="bottom-div">
                         <h3 className='total-price'>Total: ${total_price.toFixed(2)}</h3>
-                        <button className='btn-empty-cart' onClick={() => { clear() }}>Vaciar carrito</button>
+                        <button className='btn-empty-cart' onClick={()=>{clear()}}>Vaciar carrito</button>
+                        <button className='btn-empty-cart' onClick={()=>{finalizarCompra('nombre','apellido','mail')}}>Finalizar compra</button>
                     </div>
                 </>
             ) : (

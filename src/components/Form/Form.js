@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react'
 
-const Form = ({finalizarCompra}) => {
+const Form = ({ finalizarCompra }) => {
     const [first_name, setName] = useState("")
     const [last_name, setLastName] = useState("")
     const [email, setEmail] = useState("")
@@ -14,6 +14,10 @@ const Form = ({finalizarCompra}) => {
     console.log(`last name ahora es: ${last_name}`)
     console.log(`email ahora es: ${email}`)
 
+    const finalizarCompraHandler = () => {
+        finalizarCompra(first_name, last_name, email)
+    }
+
     return (
         <div>
             <form>
@@ -24,7 +28,7 @@ const Form = ({finalizarCompra}) => {
                 <label htmlFor="email">E-mail</label>
                 <input type="email" id="e-mail" onChange={onEmailChanges} />
 
-                <button onClick={()=>{finalizarCompra(first_name,last_name,email)}}>Finalizar Compra</button>
+                <button onClick={finalizarCompraHandler}>Finalizar Compra</button>
             </form>
         </div>
     );

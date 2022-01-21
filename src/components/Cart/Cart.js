@@ -15,33 +15,32 @@ const CartItemContainer = () => {
     const [ticket, setTicket] = useState([]);
     const [ticket_price, setTicketPrice] = useState();
     
-    
-    const finalizarCompra = async (first_name, last_name, email) => {
+    const finalizarCompra = (first_name, last_name, email) => {
         setTicketPrice(total_price)
         const ventasCollection = collection(db, "ventas")
-        try {
-            const result = await addDoc(ventasCollection, {
-                buyer : {
-                    name : first_name,
-                    lastName : last_name,
-                    email : email
-                },
-                items : cart ,
-                date : serverTimestamp(),
-                total : total_price
+        const docRef = addDoc(ventasCollection, {
+            buyer : {
+                name : first_name,
+                lastName : last_name,
+                email : email
+            },
+            items : cart ,
+            date : serverTimestamp(),
+            total : total_price
+        })
+        docRef
+            .then((docRef)=> {
+                toast.success('Tu compra se ha registrado con éxito!')
+                setTicket(docRef)
+                clear()
+            }).catch((error) => {
+                console.log(error)
+                toast.error('Lo sentimos. No se pudo registrar tu compra. Por favor, intenta de nuevo.')
             })
-            toast.success('Tu compra se ha registrado con éxito!');
-            setTicket(result);
-            clear();
-        } catch (error) {
-            console.log(error);
-            toast.error('Lo sentimos. No se pudo registrar tu compra. Por favor, intenta de nuevo.')
-        }
     }
 
-    useEffect(() => {
-        console.log("se modificó el ticket")
-    }, [ticket])
+    useEffect(()=>{
+    },[ticket])
 
     if (ticket.length !== 0) {
         return (
@@ -66,7 +65,6 @@ const CartItemContainer = () => {
                     <div className="bottom-div">
                         <h3 className='total-price'>Total: ${total_price.toFixed(2)}</h3>
                         <button className='btn-empty-cart' onClick={()=>{clear()}}>Vaciar carrito</button>
-                        <button className='btn-empty-cart' onClick={()=>{finalizarCompra('nombre','apellido','mail')}}>Finalizar compra</button>
                     </div>
                 </>
             ) : (

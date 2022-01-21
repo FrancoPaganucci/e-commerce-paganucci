@@ -10,25 +10,21 @@ const Form = ({ finalizarCompra }) => {
     const onLastNameChanges = (e) => { setLastName(e.target.value) }
     const onEmailChanges = (e) => { setEmail(e.target.value) }
 
-    console.log(`name ahora es: ${first_name}`)
-    console.log(`last name ahora es: ${last_name}`)
-    console.log(`email ahora es: ${email}`)
-
-    const finalizarCompraHandler = () => {
-        finalizarCompra(first_name, last_name, email)
+    const finalizarCompraHandler = (e) => {
+        e.preventDefault();
+        finalizarCompra(first_name, last_name, email);
     }
 
     return (
         <div>
-            <form>
+            <form onSubmit={finalizarCompraHandler}>
                 <label htmlFor="name">Nombre</label>
                 <input type="text" id="fname" onChange={onNameChanges} />
                 <label htmlFor="lastname">Apellido</label>
                 <input type="text" id="lname" onChange={onLastNameChanges} />
                 <label htmlFor="email">E-mail</label>
-                <input type="email" id="e-mail" onChange={onEmailChanges} />
-
-                <button onClick={finalizarCompraHandler}>Finalizar Compra</button>
+                <input type="email" id="email" onChange={onEmailChanges} />
+                <button type="submit">Finalizar Compra</button>
             </form>
         </div>
     );

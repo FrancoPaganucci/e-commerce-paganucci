@@ -7,7 +7,7 @@ import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
 import { db } from "../../firebase";
 import { useState, useEffect } from 'react';
 import Ticket from '../Ticket/Ticket';
-import Form from '../Form/Form';
+import CartForm from '../Form/CartForm';
 import { toast } from 'react-hot-toast';
 
 const CartItemContainer = () => {
@@ -54,14 +54,16 @@ const CartItemContainer = () => {
         <StyledCartItemContainer>
             {cart.length > 0 ? (
                 <>
-                    <ul>
-                        {cart.map(item => (
-                            <CartItem key={item.id} name={item.title} price={item.price} image={item.image} id={item.id} quantity={item.quantity} />
-                        ))}
-                    </ul>
+                    <div className='main-row'>
+                        <ul>
+                            {cart.map(item => (
+                                <CartItem key={item.id} name={item.title} price={item.price} image={item.image} id={item.id} quantity={item.quantity} />
+                            ))}
+                        </ul>
 
-                    <Form finalizarCompra={finalizarCompra} />
-
+                        <CartForm finalizarCompra={finalizarCompra} />
+                    </div>
+                    
                     <div className="bottom-div">
                         <h3 className='total-price'>Total: ${total_price.toFixed(2)}</h3>
                         <button className='btn-empty-cart' onClick={()=>{clear()}}>Vaciar carrito</button>

@@ -3,11 +3,21 @@ import { theme_primary, theme_secondary } from '../../styles/globalColors';
 
 export const StyledCartItemContainer = styled.div`
 margin: 30px;
+.main-row {
+    display: flex;
+    align-items: flex-start;
+    column-gap: 25px;
+    margin-bottom: 30px;
+    ul {
+        width: 50%;
+    }
+}
 .bottom-div {
     display: flex;
     flex-direction: column;
     row-gap: 10px;
-    align-items: end;
+    align-items: start;
+    margin-left: 70px;
     .btn-empty-cart {
         width: 150px;
         margin: 10px 0;

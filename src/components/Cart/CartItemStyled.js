@@ -18,12 +18,13 @@ table {
         }
     tr {
         width: 100%;
+        font-size: 10px;
         button {
             cursor: pointer;
         }
     }
     .prod-img {
-        max-width: 95px; 
+        max-width: 25px; 
     }
 }
 `

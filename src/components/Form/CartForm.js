@@ -23,13 +23,11 @@ const CartForm = ({ finalizarCompra }) => {
                 } else if (!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(values.fname)) {
                     errores.fname = "El nombre solo puede contener letras y espacios"
                 }
-
                 if (!values.lname) {
                     errores.lname = "Por favor, ingresa tu apellido"
                 } else if (!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(values.lname)) {
                     errores.lname = "El apellido solo puede contener letras y espacios"
                 }
-
                 if (!values.email) {
                     errores.email = "Por favor, ingresa tu correo electrónico"
                 } else if (!/^[a-zA-z0-9_.+-]+@[a-zA-Z0-9-]+[a-zA-Z0-9-.]+$/.test(values.email)) {

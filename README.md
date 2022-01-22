@@ -1,10 +1,11 @@
 # Documentación del proyecto - Buy IT E-Commerce
 
 Antes que nada, podés ver y probar la aplicación en este [link](https://quizzical-leavitt-dd6ac2.netlify.app/)
+
 Ahora sí, a la documentación... ;)
 
 ## Descripción
-Esta aplicación consiste en una plataforma de e-commerce que, utilizando llamadas a una API, trae información de productos y los muestra para que el usuario pueda "comprarlos", navegando por categorías y visualizando el detalle de cada uno de los productos. 
+Esta aplicación consiste en una plataforma e-commerce que, utilizando llamadas a una API, trae información de productos y los muestra para que el usuario pueda "comprarlos", navegando por categorías y visualizando el detalle de cada uno de los productos. 
 
 Las categorías para filtrar productos siguen la estructura de la API de Fakestore ("Electronics", "Jewelery"), la cual fue utilizada para desarrollar la aplicación. Más tarde, los productos almacenados allí fueron importados a una base de datos del servicio de Firebase (Firestore).
 
@@ -33,7 +34,7 @@ En este ejemplo, Componente1 es el encargado de realizar las consultas a la API 
 
 (Nota: En el ejemplo se mencionan tres componentes, pero cabe insistir en que el número de componentes está supeditado a la cantidad de operaciones/responsabilidades requeridas por el flujo de información).
 
-![estructura de los componentes](croquis-componentes.jpg)
+![estructura de los componentes](./croquis-componentes.jpg)
 
 
 ## ¿Cómo lo pruebo?
@@ -78,9 +79,7 @@ Estos son algunos features/oportunidades de refactorización para continuar mejo
 
 Si te gustó el proyecto, o si tenés algún comentario, sugerencias, críticas, lo que sea, no dudes en contactarme. ¡El feedback siempre es más que bienvenido! :)
 
-Contacto:
-[LinkedIn](https://www.linkedin.com/in/francoepaganucci/)
-[GitHub](https://github.com/FrancoPaganucci)
+Podés encontrarme en [LinkedIn](https://www.linkedin.com/in/francoepaganucci/) y en [GitHub](https://github.com/FrancoPaganucci)
 
 Otros Proyectos:
 [GIFOS](https://github.com/FrancoPaganucci/GIFOS) - Aplicación web interactiva para compartir GIFs animados. La podés ver live [acá](https://francopaganucci.github.io/GIFOS/)

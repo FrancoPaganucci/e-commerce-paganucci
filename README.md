@@ -34,7 +34,9 @@ En este ejemplo, Componente1 es el encargado de realizar las consultas a la API 
 
 (Nota: En el ejemplo se mencionan tres componentes, pero cabe insistir en que el número de componentes está supeditado a la cantidad de operaciones/responsabilidades requeridas por el flujo de información).
 
+
 ![estructura de los componentes](./croquis-componentes.jpg)
+
 
 
 ## ¿Cómo lo pruebo?

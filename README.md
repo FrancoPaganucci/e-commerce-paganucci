@@ -25,7 +25,7 @@ Puntualmente, el flujo de la información en la aplicación consiste en llamadas
 Para más información sobre Firestore y los otros servicios de Firebase, ver la [documentación de Firebase](https://firebase.google.com/docs/)
 
 
-## estructura de los componentes
+## Estructura de los componentes
 Se implementó una estructura de responsabilidad única de los componentes. El flujo es mayormente tripartito, salvo en algunas excepciones en las que dos componentes son suficientes para performar eficientemente el flujo de la información sin comprometer este principio de organización. De esta forma, la estructura de los componentes queda organizada en:
 
 Componente1 => Componente2 => Componente3

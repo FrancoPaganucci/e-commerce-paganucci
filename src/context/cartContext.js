@@ -14,8 +14,10 @@ export const CustomProvider = ({children}) => {
     const addItem = (product, quantity) => {
         setTotalPrice(total_price + (product.price * quantity));
         if (isInCart(product.title)) {
-            const prod_index = cart.findIndex(prod => prod.id === product.id);
-            cart[prod_index].quantity += quantity;
+            const cart_copy = [...cart];
+            const prod_index = cart_copy.findIndex(prod => prod.id === product.id);
+            cart_copy[prod_index].quantity += quantity;
+            setCart(cart_copy)
         } else {
             const cart_copy = [...cart];
             product.quantity = quantity;

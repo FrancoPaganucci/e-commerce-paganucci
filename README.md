@@ -84,8 +84,8 @@ Si te gustó el proyecto, o si tenés algún comentario, sugerencias, críticas,
 Podés encontrarme en [LinkedIn](https://www.linkedin.com/in/francoepaganucci/) y en [GitHub](https://github.com/FrancoPaganucci)
 
 Otros Proyectos:
-[GIFOS](https://github.com/FrancoPaganucci/GIFOS) - Aplicación web interactiva para compartir GIFs animados. La podés ver live [acá](https://francopaganucci.github.io/GIFOS/)
-[Delilah-Resto](https://github.com/FrancoPaganucci/delilah-resto) - Sistema backend de pedidos online para un restaurante. (API CRUD)
+* [GIFOS](https://github.com/FrancoPaganucci/GIFOS) - Aplicación web interactiva para compartir GIFs animados. La podés ver live [acá](https://francopaganucci.github.io/GIFOS/)
+* [Delilah-Resto](https://github.com/FrancoPaganucci/delilah-resto) - Sistema backend de pedidos online para un restaurante. (API CRUD)
 
 ¡Gracias por llegar hasta acá!
 
